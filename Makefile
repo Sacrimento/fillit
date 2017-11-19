@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abouvero <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/11/18 11:51:56 by abouvero         ###   ########.fr        #
+#    Updated: 2017/11/19 13:56:38 by abouvero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,20 +21,20 @@ SRC = libft/libft.a \
 FLAGS = -Wall -Werror -Wextra
 
 OBJ = $(SRC:.c=.o)
-	
+
 all: $(NAME)
 
 $(NAME): $(OBJ) $^
 
 %.o: %.c
-	    $(CC) -o $@ -c $< $(FLAGS) 
+	    $(CC) -o $@ -c $< $(FLAGS)
 
 clean:
 	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
-	
+
 re: fclean all
 
 norme:
