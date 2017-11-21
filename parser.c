@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/19 17:44:14 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/19 18:09:14 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,21 @@ char          *block_parser(char *b)
   while (j < 3)
   {
     if (b[i + 1] == '#')
-      {
-        parsed[j++] = 'r';
-        i++;
-      }
-      else if (b[i + 5] == '#')
-      {
-        parsed[j++] = 'd';
-        i += 5;
-      }
-      else if (b[i - 5] == '#')
-      {
-        parsed[j++] = 'u';
-        i -= 5;
+    {
+      parsed[j++] = 'r';
+	  j++;
+      i++;
     }
+    else if (b[i + 5] == '#')
+    {
+      parsed[j++] = 'd';
+      i += 5;
+    }
+    else if (b[i - 5] == '#')
+    {
+      parsed[j++] = 'u';
+      i -= 5;
+	}
   }
   return (parsed);
 }
