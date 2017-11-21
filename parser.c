@@ -1,69 +1,98 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/16 11:17:41 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/19 17:44:14 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-/* 3222
-** 1. Nb de points avant le premier diese
-**      sur la ligne du block_
-** 2. Nb de points entre les deux # suivants.
-*/
-
-static char   fpoint(char *b)
+char          *remove_nl(char *b)
 {
   int   i;
-  char  c;
+  int   j;
+  char  *new_b;
 
+  new_b = ft_strnew(ft_strlen(b));
   i = 0;
-  c = 0;
+  j = 0;
   while (b[i])
   {
     if (b[i] == '\n')
-      c = 0;
-    else if (b[i] == '.')
-      c++;
-    else if (b[i] == '#')
-      return (c);
+      i++;
+    new_b[j++] = b[i];
     i++;
   }
-  return (0);
+  return (new_b);
+}
+
+char          *tetri_parser_exce(char *b)
+{
+  char   *parsed;
+
+  parsed = remove_nl(b);
+  if (ft_strstr(parsed, "###..#"))
+    parsed = "rdbd";
+  else if (ft_strstr(parsed, "#...##..#"))
+    parsed = "urbu";
+  else if (ft_strstr(parsed, "#..##...#"))
+    parsed = "ulbu";
+  else if (ft_strstr(parsed, "#..###"))
+    parsed = "rubr";
+  else
+    parsed = NULL;
+  return (parsed);
+}
+
+int           get_left(char *b)
+{
+  int   i;
+  int   diese;
+
+  i = 0;
+  diese = 4;
+  while (b[i])
+  {
+    if (b[i] == '#' && diese % 5 > (i + 1) % 5)
+      diese = i + 1;
+    i++;
+  }
+  return (diese - 1);
 }
 
 char          *block_parser(char *b)
 {
-  int     j;
   int     i;
-  int     point;
+  int     j;
   char    *parsed;
 
-  i = 0;
-  j = 1;
-
-  parsed = ft_strnew(4);
-  parsed[0] = fpoint(b) + '0';
-  parsed[4] = '\0';
-  while (j < 4)
+  i = get_left(b);
+  j = 0;
+  if ((parsed = tetri_parser_exce(b)))
+    return (parsed);
+  parsed = ft_strnew(3);
+  while (j < 3)
   {
-    point = 0;
-    while (b[i] != '#')
-    {
-      if (b[i] == '.')
-        point++;
-      i++;
+    if (b[i + 1] == '#')
+      {
+        parsed[j++] = 'r';
+        i++;
+      }
+      else if (b[i + 5] == '#')
+      {
+        parsed[j++] = 'd';
+        i += 5;
+      }
+      else if (b[i - 5] == '#')
+      {
+        parsed[j++] = 'u';
+        i -= 5;
     }
-    printf("%d\n", point);
-    parsed[j] = point + '0';
-    j++;
   }
-  printf("%s\n", parsed);
   return (parsed);
 }
