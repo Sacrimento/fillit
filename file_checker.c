@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:54:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/21 12:33:09 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 12:00:34 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_list *is_file_valid(char *file)
 			nl++;
 		else if (i == 0 || nl == 5)
 		{
-			list = ft_list_push_front(is_block_valid(ft_strsub(file, i, 20)), list);
+			list = ft_list_push_back(is_block_valid(ft_strsub(file, i, 20)), list);
 			nl = 0;
 		}
 		i++;

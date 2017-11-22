@@ -6,13 +6,11 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/22 11:19:37 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 14:02:16 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-#include <string.h>
 
 char          *remove_nl(char *b)
 {
@@ -39,7 +37,7 @@ char          *tetri_parser_exce(char *b)
 
   parsed = remove_nl(b);
   if (ft_strstr(parsed, "###..#"))
-    parsed = "rdbd";
+    parsed = "rdbr";
   else if (ft_strstr(parsed, "#...##..#"))
     parsed = "urbu";
   else if (ft_strstr(parsed, "#..##...#"))
@@ -47,7 +45,7 @@ char          *tetri_parser_exce(char *b)
   else if (ft_strstr(parsed, "#..###"))
     parsed = "rubr";
   else if (ft_strstr(parsed, "##..##"))
-    parsed = "urdl";
+    parsed = "urd";
   else
     parsed = NULL;
   return (parsed);
