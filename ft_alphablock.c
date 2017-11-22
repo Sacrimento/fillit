@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:45:54 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 16:05:21 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/22 16:19:57 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int	ft_alphablock(char **grid, char c)
 		{
 			if (grid[countl][countr] == '#')
 			{
-				grid[countl][countr++] = c;
+				grid[countl][countr] = c;
 				counthash++;
 			}
+			countr++;
 		}
 		countr = 0;
 		countl++;
