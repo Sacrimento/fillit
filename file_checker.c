@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:54:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/19 13:48:25 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/21 12:33:09 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		valid_char(char c)
 	return (0);
 }
 
-static void is_block_valid(char *block)
+static char *is_block_valid(char *block)
 {
 	int		diese;
 	int		point;
@@ -47,30 +47,30 @@ static void is_block_valid(char *block)
 		i++;
 	}
 	if (nl == 4 && diese == 4 && point == 12)
-	{
-		block_parser(block);
-		return ;
-	}
+		return (block_parser(block));
 	error();
+	return (NULL);
 }
 
-int		is_file_valid(char *file)
+t_list *is_file_valid(char *file)
 {
 	int		i;
 	int		nl;
+	t_list	*list;
 
 	i = 0;
 	nl = 0;
+	list = NULL;
 	while (file[i] && valid_char(file[i]))
 	{
 		if (file[i] == '\n')
 			nl++;
 		else if (i == 0 || nl == 5)
 		{
-			is_block_valid(ft_strsub(file, i, 20));
+			list = ft_list_push_front(is_block_valid(ft_strsub(file, i, 20)), list);
 			nl = 0;
 		}
 		i++;
 	}
-	return (1);
+	return (list);
 }

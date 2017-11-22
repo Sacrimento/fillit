@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:22:08 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/19 17:06:13 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 11:19:44 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ static char		*ft_read(char *file)
 	return (ft_strdup(buffer));
 }
 
+t_list	*check_parse(char *file)
+{
+	t_list	*list = NULL;
+	list = is_file_valid(ft_read(file));
+	return (list);
+}
+
 int			main(int argc, char **argv)
 {
 	t_list	*tetriminos;
@@ -43,7 +50,7 @@ int			main(int argc, char **argv)
 		ft_putstr("usage: ./fillit sample_file\n");
 		return (1);
 	}
-	if (!(is_file_valid(ft_read(argv[1]))))
-		return (1);
+	tetriminos = check_parse(argv[1]);
+	ft_print_list(tetriminos);
 	return (0);
 }
