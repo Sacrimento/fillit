@@ -6,11 +6,13 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/19 18:09:14 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 11:19:37 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+#include <string.h>
 
 char          *remove_nl(char *b)
 {
@@ -44,25 +46,43 @@ char          *tetri_parser_exce(char *b)
     parsed = "ulbu";
   else if (ft_strstr(parsed, "#..###"))
     parsed = "rubr";
+  else if (ft_strstr(parsed, "##..##"))
+    parsed = "urdl";
   else
     parsed = NULL;
   return (parsed);
 }
 
-int           get_left(char *b)
+int           extreminos(char *b)
 {
-  int   i;
-  int   diese;
+  int                         i;
+  int                         expectopatrominos;
+  int                         last_d;
 
   i = 0;
-  diese = 4;
+  expectopatrominos = 0;
   while (b[i])
   {
-    if (b[i] == '#' && diese % 5 > (i + 1) % 5)
-      diese = i + 1;
-    i++;
+    while (b[i] && b[i] != '#')
+      i++;
+    if (b[i + 1] == '#')
+      expectopatrominos++;
+    if (b[i - 1] == '#')
+      expectopatrominos++;
+    if (b[i + 5] == '#')
+      expectopatrominos++;
+    if (b[i - 5] == '#')
+      expectopatrominos++;
+    if (expectopatrominos == 1)
+      return (i);
+    else
+    {
+      last_d = i;
+      i++;
+      expectopatrominos = 0;
+    }
   }
-  return (diese - 1);
+  return (last_d);
 }
 
 char          *block_parser(char *b)
@@ -70,30 +90,41 @@ char          *block_parser(char *b)
   int     i;
   int     j;
   char    *parsed;
+  int     code;
 
-  i = get_left(b);
+  i = extreminos(b);
   j = 0;
   if ((parsed = tetri_parser_exce(b)))
     return (parsed);
   parsed = ft_strnew(3);
   while (j < 3)
   {
-    if (b[i + 1] == '#')
+    if (b[i + 1] == '#' && code != -1)
     {
+      code = 1;
       parsed[j++] = 'r';
-	  j++;
       i++;
     }
-    else if (b[i + 5] == '#')
+    else if (b[i + 5] == '#' && code != -5)
     {
+      code = 5;
       parsed[j++] = 'd';
       i += 5;
     }
-    else if (b[i - 5] == '#')
+    else if (b[i - 5] == '#' && code != 5)
     {
+      code = -5;
       parsed[j++] = 'u';
       i -= 5;
-	}
+	  }
+    else if (b[i - 1] == '#' && code != 1)
+    {
+      code = -1;
+      parsed[j++] = 'l';
+      i--;
+    }
+    else
+      error();
   }
   return (parsed);
 }
