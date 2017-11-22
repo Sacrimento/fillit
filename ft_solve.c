@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_alphablock.c                                    :+:      :+:    :+:   */
+/*   ft_solve.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 15:45:54 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 16:33:07 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/22 16:35:13 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/11/22 17:20:34 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_alphablock(char **grid, char c)
-{
-	int countl;
-	int countr;
-	int counthash;
+#include "fillit.h"
 
-	countl = 0;
-	countr = 0;
-	counthash = 0;
-	while (grid[countl] && counthash <= 4)
-	{
-		while (grid[countl][countr])
-		{
-			if (grid[countl][countr] == '#')
-			{
-				grid[countl][countr] = c;
-				counthash++;
-			}
-			countr++;
-		}
-		countr = 0;
-		countl++;
-	}
-	if (counthash == 4)
-		return (1);
-	return (0);
+char **ft_solve(t_list *tetris)
+{
+	
 }
