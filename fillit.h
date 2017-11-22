@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 15:29:53 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 15:56:44 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
+/*   Updated: 2017/11/22 16:02:38 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ t_list  *is_file_valid(char *file);
 char  *block_parser(char *b);
 void  error(void);
 int		ft_placeblock(char *block, char **grid, int cline, int crow);
-
+int		ft_alphablock(char **grid, char c);
 
 #endif

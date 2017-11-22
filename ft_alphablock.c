@@ -6,11 +6,11 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:45:54 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 15:55:45 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/22 16:05:21 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_alphablock(char c, char **grid)
+int	ft_alphablock(char **grid, char c)
 {
 	int countl;
 	int countr;
