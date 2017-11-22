@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 14:59:29 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/10 17:43:01 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 15:34:28 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char	*ft_strstr(const char *haystack, const char *needle)
+int		ft_strstr(const char *haystack, const char *needle)
 {
 	int			i;
 	int			j;
@@ -31,8 +31,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 				j++;
 				if (needle[j] == '\0')
 				{
-					ptr = &(haystack[i]);
-					return ((char*)ptr);
+					return (1);
 				}
 			}
 		}

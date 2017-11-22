@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:46:51 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/15 11:02:55 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 15:34:59 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct	s_list
 {
 	void			*content;
 	size_t			content_size;
+	char			letter;
 	struct s_list	*next;
 }				t_list;
 
@@ -39,7 +40,7 @@ char			*ft_strncat(char *s1, const char *s2, size_t n);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
-char			*ft_strstr(const char *haystack, const char *needle);
+int				ft_strstr(const char *haystack, const char *needle);
 char			*ft_strnstr(const char *hay, const char *nee, size_t len);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);

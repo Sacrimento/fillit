@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:06:59 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/14 16:19:09 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 15:36:51 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		}
 		ft_memcpy(new->content, content, content_size);
 		new->content_size = content_size;
+		new->letter = 0;
 	}
 	new->next = NULL;
 	return (new);
