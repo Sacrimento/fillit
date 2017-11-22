@@ -6,23 +6,25 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 13:53:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 11:54:32 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/22 12:07:47 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fillit.h"
 
-static void ft_revlast(char *block, char **grid, int cline, int crow, char c)
+static int ft_revlast(char *block, char **grid, int cline, int crow, char c)
 {
-	if (block[-2] == 'l')
+	if (block[-1] == 'l')
 		cline++;
-	if (block[-2] == 'r')
+	if (block[-1] == 'r')
 		cline--;
-	if (block[-2] == 'u')
+	if (block[-1] == 'u')
 		grid++;
-	if (block[-2] == 'd')
+	if (block[-1] == 'd')
 		grid--;
-	ft_placeblock(&block[0], grid, cline, crow, c);
+	if(ft_placeblock(&block[1], grid, cline, crow, c))
+		return (1);
+	return (0);
 }
 
 /* Tests if the current placement is ok for this block */
@@ -47,7 +49,7 @@ int	ft_placeblock(char *block, char **grid, int cline, int crow, char c)
 		if (block[0] == 'd')
 			placeres = ft_placeblock(&block[1], grid + 1, cline, crow, c);
 		if (block[0] == 'b')
-			ft_revlast(&block[1], grid, cline, crow, c);
+			placeres = ft_revlast(&block[0], grid, cline, crow, c);
 	}
 		if (placeres)
 			grid[crow][cline] = c;
