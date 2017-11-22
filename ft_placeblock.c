@@ -6,13 +6,13 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 13:53:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 12:07:47 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/22 13:34:47 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fillit.h"
 
-static int ft_revlast(char *block, char **grid, int cline, int crow, char c)
+static int	ft_revlast(char *block, char **grid, int cline, int crow, char c)
 {
 	if (block[-1] == 'l')
 		cline++;
@@ -22,14 +22,12 @@ static int ft_revlast(char *block, char **grid, int cline, int crow, char c)
 		grid++;
 	if (block[-1] == 'd')
 		grid--;
-	if(ft_placeblock(&block[1], grid, cline, crow, c))
+	if (ft_placeblock(&block[1], grid, cline, crow, c))
 		return (1);
 	return (0);
 }
 
-/* Tests if the current placement is ok for this block */
-
-int	ft_placeblock(char *block, char **grid, int cline, int crow, char c)
+int			ft_placeblock(char *block, char **grid, int cline, int crow, char c)
 {
 	int placeres;
 
@@ -41,7 +39,7 @@ int	ft_placeblock(char *block, char **grid, int cline, int crow, char c)
 	if (grid[crow][cline])
 	{
 		if (block[0] == 'l')
-			placeres =	ft_placeblock(&block[1], grid, cline - 1, crow, c);
+			placeres = ft_placeblock(&block[1], grid, cline - 1, crow, c);
 		if (block[0] == 'r')
 			placeres = ft_placeblock(&block[1], grid, cline + 1, crow, c);
 		if (block[0] == 'u')
@@ -51,8 +49,7 @@ int	ft_placeblock(char *block, char **grid, int cline, int crow, char c)
 		if (block[0] == 'b')
 			placeres = ft_revlast(&block[0], grid, cline, crow, c);
 	}
-		if (placeres)
-			grid[crow][cline] = c;
-		printf("%d recursion: %c\n", placeres, block[0]);
-		return (placeres);
+	if (placeres)
+		grid[crow][cline] = c;
+	return (placeres);
 }
