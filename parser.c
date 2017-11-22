@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/22 12:51:07 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 14:02:16 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ char          *block_parser(char *b)
   int     code;
 
   i = extreminos(b);
-  j = 1;
+  j = 0;
   if ((parsed = tetri_parser_exce(b)))
     return (parsed);
   parsed = ft_strnew(3);
-  while (j < 4)
+  while (j < 3)
   {
     if (b[i + 1] == '#' && code != -1)
     {
