@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 19:33:54 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/14 19:39:49 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 17:11:00 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_list	*ft_list_push_back(void *data, t_list *list)
 	beginning = list;
 	if (!(elem = ft_lstnew(data, sizeof(data))))
 		return (NULL);
+	if (!list)
+		return (elem);
 	while (list->next)
 		list = list->next;
 	list->next = elem;
