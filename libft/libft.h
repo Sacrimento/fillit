@@ -6,7 +6,7 @@
 /*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 11:46:51 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/15 11:02:55 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 15:41:33 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ t_list			*ft_list_pop_back(t_list *list);
 t_list			*ft_list_push_front(void *data, t_list *list);
 t_list			*ft_list_push_back(void *data, t_list *list);
 void			ft_print_list(t_list *list);
+void			ft_print_split(char **str);
 
 #endif

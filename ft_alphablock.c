@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_alphablock.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 15:29:53 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 15:56:44 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/22 15:45:54 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/11/22 15:55:45 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+int	ft_alphablock(char c, char **grid)
+{
+	int countl;
+	int countr;
+	int counthash;
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
-# include <stdio.h>
-
-# define BUFF_SIZE 4096
-
-t_list  *is_file_valid(char *file);
-char  *block_parser(char *b);
-void  error(void);
-int		ft_placeblock(char *block, char **grid, int cline, int crow);
-
-
-#endif
+	countl = 0;
+	countr = 0;
+	counthash = 0;
+	while (grid[countl])
+	{
+		while (grid[countl][countr])
+		{
+			if (grid[countl][countr] == '#')
+			{
+				grid[countl][countr++] = c;
+				counthash++;
+			}
+		}
+		countr = 0;
+		countl++;
+	}
+	if (counthash == 4)
+		return (1);
+	return (0);
+}

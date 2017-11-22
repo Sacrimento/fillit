@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_print_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 15:29:53 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 15:56:44 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/16 16:49:11 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/11/16 16:50:16 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
+void	ft_print_split(char **tab)
+{
+	int cursor;
 
-# include <stdio.h>
-
-# define BUFF_SIZE 4096
-
-t_list  *is_file_valid(char *file);
-char  *block_parser(char *b);
-void  error(void);
-int		ft_placeblock(char *block, char **grid, int cline, int crow);
-
-
-#endif
+	cursor = 0;
+	while (tab[cursor] != 0)
+	{
+		ft_putstr(tab[cursor]);
+		ft_putchar('\n');
+		cursor++;
+	}
+}
