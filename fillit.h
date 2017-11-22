@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/22 11:36:48 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/22 11:40:18 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,9 @@
 
 # define BUFF_SIZE 4096
 
-<<<<<<< HEAD
 t_list  *is_file_valid(char *file);
 char  *block_parser(char *b);
 void  error(void);
-=======
-int		is_file_valid(char *file);
-char	*block_parser(char *b);
-void	error(void);
 int		ft_placeblock(char *block, char **grid, int cline, int crow, char c);
->>>>>>> 6ee2d46450ff3ed68add72a489a1859da5fb52d4
 
 #endif

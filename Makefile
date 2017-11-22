@@ -6,7 +6,7 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/11/19 13:56:38 by abouvero         ###   ########.fr        #
+#    Updated: 2017/11/22 11:53:24 by abouvero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ re: fclean all
 
 norme:
 	norminette
+
+lib:
+	make -C libft/
 
 run:
 	./$(NAME)
