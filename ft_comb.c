@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 12:05:28 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/24 16:25:26 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/24 18:11:25 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_comb(int nbr)
 	fill_tabs(&tab, &bin, nbr);
 	while (!(check_tab_values(&bin, nbr)))
 	{
-		if ((ret = ft_block_well_placed(tab, nbr)))
+		if ((ret = ft_block_well_placed(tab[i])))
 		{
 			bin[ret] = 0;
 			ft_tab_swap(&tab, &bin);
