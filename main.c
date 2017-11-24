@@ -6,13 +6,13 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:22:08 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/22 16:28:49 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/24 16:27:58 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void          error(void)
+void			error(void)
 {
 	ft_putstr("error\n");
 	exit(1);
@@ -33,14 +33,15 @@ static char		*ft_read(char *file)
 	return (ft_strdup(buffer));
 }
 
-t_list	*check_parse(char *file)
+t_list			*check_parse(char *file)
 {
-	t_list	*list = NULL;
+	t_list	*list;
+
 	list = is_file_valid(ft_read(file));
 	return (list);
 }
 
-int			main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_list	*tetriminos;
 
