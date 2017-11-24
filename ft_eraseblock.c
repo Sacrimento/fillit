@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_placenext.c                                     :+:      :+:    :+:   */
+/*   ft_eraseblock.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/24 11:48:44 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/24 11:49:05 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/11/24 11:55:23 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int *ft_placenext(char **grid, char *block)
+void	ft_eraseblock(char **grid, char c)
 {
-	/*
-	 * this function will genereate an array and swap the values and test all 
-	 * combinations with the grid, if in a combination placing a specific block
-	 * make the combination badder than the last saved combi it drops all
-	 * the nexts possibilites whith this block in this order
-	 */
+	int line;
+	int row;
+	int count;
 
+	line = 0;
+	row = 0;
+	count = 0;
+	while (grid[line] && count <= 4)
+	{
+		while (grid[line][row])
+		{
+			if (grid[line][row] == c)
+			{
+				grid[line][row] = '.';
+				count++;
+			}
+			row++;
+		}
+		row = 0;
+		line++;
+	}
 }
