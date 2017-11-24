@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/23 15:58:38 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/24 12:03:27 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ char  *block_parser(char *b);
 void  error(void);
 int		ft_placeblock(char *block, char **grid, int cline, int crow);
 int		ft_alphablock(char **grid, char c);
+void	ft_eraseblock(char **frid, char c);
 
 #endif
