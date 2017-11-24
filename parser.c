@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/24 16:39:38 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/24 18:10:27 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ char		*tetri_parser_exce(char *b)
 int			extreminos(char *b)
 {
 	int		i;
-	int		expectopatrominos;
+
+    int		expectopatrominos;
 	int		last_d;
 
 	i = 0;
@@ -75,8 +76,7 @@ int			extreminos(char *b)
 			return (i);
 		else
 		{
-			last_d = i;
-			i++;
+			last_d = i++;
 			expectopatrominos = 0;
 		}
 	}
