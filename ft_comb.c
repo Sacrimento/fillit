@@ -6,13 +6,13 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 12:05:28 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/24 16:09:29 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/24 16:25:26 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void  ft_tab_swap(int **tab, int **bin)
+void	ft_tab_swap(int **tab, int **bin)
 {
 	int i;
 	int tmp;
