@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 12:05:28 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/24 15:08:00 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/24 16:09:29 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,6 @@ void	fill_tabs(int **tab, int **bin, int nbr)
 	}
 }
 
-int ft_block_well_placed(int *tab, int nbr)
-{
-	(void)tab;
-	(void)nbr;
-	return (0);
-}
-
 void	ft_comb(int nbr)
 {
 	int		*tab;
@@ -81,12 +74,4 @@ void	ft_comb(int nbr)
 		else
 			bin[i++] = 1;
 	}
-}
-
-int main(int argc, char const *argv[]) {
-	(void)argc;
-	printf("TEST3");
-	ft_comb(atoi(argv[1]));
-	printf("TEST2");
-	return 0;
 }
