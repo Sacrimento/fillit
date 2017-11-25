@@ -6,9 +6,10 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/25 14:26:28 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/25 17:43:14 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef FILLIT_H
 # define FILLIT_H
@@ -31,5 +32,6 @@ void    error(void);
 int     ft_placeblock(char *block, char **grid, int cline, int crow);
 int     ft_alphablock(char **grid, char c);
 void	ft_eraseblock(char **frid, char c);
+int		*nextpos(char **grid, int max);
 
 #endif
