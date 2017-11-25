@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/24 16:22:57 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/25 14:26:28 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void    error(void);
 int     ft_placeblock(char *block, char **grid, int cline, int crow);
 int     ft_alphablock(char **grid, char c);
 void	ft_eraseblock(char **frid, char c);
-:q
+
 #endif
