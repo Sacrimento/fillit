@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/24 19:00:18 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/26 19:48:20 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,30 @@ static int	*fill_posarray(int line, int row)
 	return (array);
 }
 
-int	*nextpos(char **grid, int max)
+int	*nextpos(char **grid, int limit)
 {
 	int line;
 	int row;
-	int phase2;
+	int *res;
 
-	line = 0;
+	line = limit;
 	row = 0;
-	phase2 = 0;
-	while (grid[line] && line <= max)
+	res = NULL;
+	if (limit == 0)
+		return (!ft_isalpha(grid[0][0]) ? fill_posarray(0, 0) : NULL);
+	if ((res = (nextpos(grid, limit - 1))))
+		return (res);
+	while (row < limit)
 	{
-		while ((line <= max || row <= max) && line >= 0)
-		{
-			while (ft_isalpha(grid[line][row]) && row <= (max - line))
-				++row;
-			if (grid[line][row] && !ft_isalpha(grid[line][row]))
-				return (fill_posarray(line, row));
-			line--;
-			if (line == max && row == max)
-			row = (phase2 ? max - line + 1 : 0);
-		}
-		line = max;
+		if (!ft_isalpha(grid[line][row]))
+			return (fill_posarray(line, row));
+		row++;
 	}
-	return (NULL);
+	while (line >= 0)
+	{
+		if (!ft_isalpha(grid[line][row]))
+			return (fill_posarray(line, row));
+		line--;
+	}
+	return (res);
 }
-
-//int	ft_placenext(char **grid, char *block)
-//{
-	/*
-	 * this function will genereate an array and swap the values and test all 
-	 * combinations with the grid, if in a combination placing a specific block
-	 * make the combination badder than the last saved combi it drops all
-	 * the nexts possibilites whith this block in this order
-	 */
-	
-//}
-
