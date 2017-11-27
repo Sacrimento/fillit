@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 14:26:24 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/27 16:53:15 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	*fill_posarray(int line, int row)
 	return (array);
 }
 
-int			*nextpos(char **grid, int limit)
+static int	*nextpos(char **grid, int limit)
 {
 	int line;
 	int row;
@@ -49,4 +49,39 @@ int			*nextpos(char **grid, int limit)
 		line++;
 	}
 	return (NULL);
+}
+
+static int	test_limit(char **grid, int limit)
+{
+	int line;
+	int row;
+
+	line = limit;
+	row = 0;
+	while (row < limit)
+	{
+		if (grid[line][row] && ft_isalpha(grid[line][row]))
+			return (0);
+		row++;
+	}
+	while (line >= 0)
+	{
+		if (grid[line][row] && ft_isalpha(grid[line][row]))
+			return (0);
+		line--;
+	}
+	return (1);
+}
+
+int			ft_placenext(char *block, char **grid, int limit, char letter)
+{
+	int *coord;
+
+	if ((coord = nextpos(grid, limit)) 
+			&& ft_placeblock(block, grid, coord[0], coord[1])
+			&& ft_alphablock(grid, letter) && test_limit(grid, limit))
+		return (1);
+	else
+		ft_eraseblock(grid, letter);
+	return (0);
 }

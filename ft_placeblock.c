@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 13:53:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 14:20:32 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/27 16:33:43 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ int			ft_placeblock(char *block, char **grid, int line, int row)
 	}
 	if (placeres && grid[line][row] && grid[line])
 		grid[line][row] = '#';
-	printf("placer: placeres:%d, line:%d, row:%d\n", placeres, line, row);
 	return (placeres);
 }
