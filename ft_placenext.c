@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 14:21:40 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/27 14:26:24 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	*fill_posarray(int line, int row)
 	return (array);
 }
 
-int	*nextpos(char **grid, int limit)
+int			*nextpos(char **grid, int limit)
 {
 	int line;
 	int row;
