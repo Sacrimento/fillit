@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 14:36:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 15:22:24 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/27 16:12:54 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ char **ft_tabcreator(int size)
 	char **grid;
 
 	count = 0;
-	grid = ft_memalloc(size + 1);
+	if (!(grid = (char**)malloc(sizeof(char*) * size + 1)))
+		return (NULL);
 	while (count < size)
 	{
 		if ((line = ft_strnew(size)) && grid)
+		{
 			ft_memset(line, '.', size);
-		grid[count] = line;
+			grid[count] = &line[0];
+		}
 		count++;
 	}
+	grid[count] = 0;
 	return (grid);
 }
 
