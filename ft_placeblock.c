@@ -6,50 +6,50 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 13:53:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/24 19:00:23 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/27 13:04:08 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fillit.h"
 
-static int	ft_revlast(char *block, char **grid, int cline, int crow)
+static int	ft_revlast(char *block, char **grid, int line, int row)
 {
 	if (block[-1] == 'l')
-		cline++;
+		row++;
 	if (block[-1] == 'r')
-		cline--;
+		row--;
 	if (block[-1] == 'u')
-		grid++;
+		line++;
 	if (block[-1] == 'd')
-		grid--;
-	if (ft_placeblock(&block[1], grid, cline, crow))
+		line--;
+	if (ft_placeblock(&block[1], grid, line, row))
 		return (1);
 	return (0);
 }
 
-int			ft_placeblock(char *block, char **grid, int cline, int crow)
+int			ft_placeblock(char *block, char **grid, int line, int row)
 {
 	int placeres;
 
 	placeres = 0;
 	if (!block[0])
 		placeres = 1;
-	if (ft_isalpha(grid[crow][cline]))
+	if (ft_isalpha(grid[line][row]))
 		return (0);
-	if (grid[crow][cline])
+	if (grid[line][row])
 	{
 		if (block[0] == 'l')
-			placeres = ft_placeblock(&block[1], grid, cline - 1, crow);
+			placeres = ft_placeblock(&block[1], grid, line, row - 1);
 		if (block[0] == 'r')
-			placeres = ft_placeblock(&block[1], grid, cline + 1, crow);
+			placeres = ft_placeblock(&block[1], grid, line, row + 1);
 		if (block[0] == 'u')
-			placeres = ft_placeblock(&block[1], grid - 1, cline, crow);
+			placeres = ft_placeblock(&block[1], grid, line - 1, row);
 		if (block[0] == 'd')
-			placeres = ft_placeblock(&block[1], grid + 1, cline, crow);
+			placeres = ft_placeblock(&block[1], grid, line + 1, row);
 		if (block[0] == 'b')
-			placeres = ft_revlast(&block[0], grid, cline, crow);
+			placeres = ft_revlast(&block[0], grid, line, row);
 	}
-	if (placeres)
-		grid[crow][cline] = '#';
+	if (placeres && grid[line][row])
+		grid[line][row] = '#';
 	return (placeres);
 }

@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/26 19:48:20 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/27 13:02:26 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,21 @@ int	*nextpos(char **grid, int limit)
 
 	line = limit;
 	row = 0;
-	res = NULL;
 	if (limit == 0)
 		return (!ft_isalpha(grid[0][0]) ? fill_posarray(0, 0) : NULL);
 	if ((res = (nextpos(grid, limit - 1))))
 		return (res);
 	while (row < limit)
 	{
-		if (!ft_isalpha(grid[line][row]))
+		if (grid[line][row] && !ft_isalpha(grid[line][row]))
 			return (fill_posarray(line, row));
 		row++;
 	}
 	while (line >= 0)
 	{
-		if (!ft_isalpha(grid[line][row]))
+		if (grid[line][row] && !ft_isalpha(grid[line][row]))
 			return (fill_posarray(line, row));
 		line--;
 	}
-	return (res);
+	return (NULL);
 }
