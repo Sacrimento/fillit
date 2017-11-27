@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 13:53:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 13:04:08 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/27 14:20:32 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			ft_placeblock(char *block, char **grid, int line, int row)
 	placeres = 0;
 	if (!block[0])
 		placeres = 1;
-	if (ft_isalpha(grid[line][row]))
+	if (grid[line][row] && ft_isalpha(grid[line][row]))
 		return (0);
 	if (grid[line][row])
 	{
@@ -49,7 +49,8 @@ int			ft_placeblock(char *block, char **grid, int line, int row)
 		if (block[0] == 'b')
 			placeres = ft_revlast(&block[0], grid, line, row);
 	}
-	if (placeres && grid[line][row])
+	if (placeres && grid[line][row] && grid[line])
 		grid[line][row] = '#';
+	printf("placer: placeres:%d, line:%d, row:%d\n", placeres, line, row);
 	return (placeres);
 }

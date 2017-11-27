@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 13:02:26 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/27 14:21:40 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ int	*nextpos(char **grid, int limit)
 			return (fill_posarray(line, row));
 		row++;
 	}
-	while (line >= 0)
+	row = limit;
+	line = 0;
+	while (line <= limit)
 	{
 		if (grid[line][row] && !ft_isalpha(grid[line][row]))
 			return (fill_posarray(line, row));
-		line--;
+		line++;
 	}
 	return (NULL);
 }
