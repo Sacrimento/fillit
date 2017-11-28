@@ -6,99 +6,129 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 12:05:28 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/28 14:45:29 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/28 17:57:38 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_tab_swap(int *tab, int *bin, int nbr)
+t_block_sort	*struct_init(t_list *list, int j)
 {
-	int i;
-	int tmp;
+	t_block_sort	*tab;
+	int				i;
 
+	tab = (t_block_sort*)malloc(sizeof(t_block_sort) * ft_list_size(list));
 	i = 0;
-	while (bin[i] == 1)
-		i++;
-
-	if (i != nbr - 1)
+	while (i < ft_list_size(list))
 	{
-		tmp = tab[i];
-		tab[i] = tab[i + 1];
-		tab[i + 1] = tmp;
-		tmp = bin[i];
-		bin[i] = bin[i + 1];
-		bin[i + 1] = tmp;
+		(tab[i]).numero = i;
+		(tab[i]).placed = 0;
+		(tab[i]).tried  = 0;
+		i++;
 	}
-
+	(tab[0]).numero = j;
+	(tab[j]).numero = 0;
+	return (tab);
 }
 
-int		check_tab_values(int *bin, int size)
+int		check_struct_values(t_block_sort *tab, int size)
 {
 	int		i;
 
 	i = 0;
 	while (i < size)
 	{
-		if (bin[i] == 0)
+		if ((tab[i]).placed == 0)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-void	fill_tabs(int *tab, int *bin, int nbr)
+int		check_struct_tries(t_block_sort *tab, int size)
 {
 	int		i;
 
 	i = 0;
-	while (i < nbr)
-	{
-		tab[i] = i;
-		bin[i] = 0;
-		i++;
-	}
-}
-
-void print_tab(int *tab, int size)
-{
-	int i = 0;
 	while (i < size)
 	{
-		printf("[%d] ", tab[i]);
+		if ((tab[i]).tried == 0)
+			return (0);
 		i++;
 	}
-	printf("\n");
+	return (1);
 }
 
-void	ft_comb(int nbr, t_list *list)
+void 	ft_tab_swap(t_block_sort *tab, int size)
 {
-	int		*tab;
-	int		*bin;
 	int		i;
-	char	**grid = ft_tabcreator(16);
+	int		j;
+	t_block_sort tmp;
 
 	i = 0;
-	tab = (int*)malloc(sizeof(int) * (nbr));
-	bin = (int*)malloc(sizeof(int) * (nbr));
-	fill_tabs(tab, bin, nbr);
-
-	while (!(check_tab_values(bin, nbr)))
+	while ((tab[i]).placed == 1 || (tab[i]).tried == 1)
+		i++;
+	j = i - 1;
+	while (i < size)
 	{
-		//print_tab(tab, nbr);
-		//print_tab(bin, nbr);
-		//printf("LISTE : %s, %c\n", (ft_list_at(list, tab[i]))->content, (ft_list_at(list, tab[i]))->letter);
-		//for (int j = 0; j < 7; j++)
-			//printf("%s\n", (ft_list_at(list, j)->content));
-		if (!(ft_placenext((ft_list_at(list, tab[i]))->content, grid, 11, (ft_list_at(list, tab[i]))->letter)))
+		if ((tab[i]).tried == 0)
 		{
-			bin[i] = 0;
-			ft_tab_swap(tab, bin, nbr);
+			tmp = tab[i];
+			tab[i] = tab[j];
+			tab[j]= tmp;
+			return ;
 		}
-		else
-			bin[i++] = 1;
+		i++;
+	}
+}
 
+void 	ft_print_struct(t_block_sort *tab, int size)
+{
+	int		i = 0;
+	while (i < size)
+	{
+		printf("[NUMERO : %d] ", (tab[i]).numero);
+		printf("[PLACED : %d] ", (tab[i]).placed);
+		printf("[TRIED : %d]\n", (tab[i]).tried);
+		i++;
+	}
+}
+
+int		ft_comb(t_list *list, int j)
+{
+	int		i;
+	t_block_sort	*tab;
+	char	**grid = ft_tabcreator(16);
+
+	tab = struct_init(list, j);
+	i = 0;
+	while (!(check_struct_values(tab, ft_list_size(list))))
+	{
+		ft_print_struct(tab, ft_list_size(list));
+		(tab[i]).tried = 1;
+		if (!(ft_placenext((ft_list_at(list, (tab[i]).numero))->content, grid, 15, (ft_list_at(list, (tab[i]).numero))->letter)))
+			ft_tab_swap(tab, ft_list_size(list));
+		else
+			(tab[i++]).placed = 1;
 		ft_print_split(grid);
-		printf("\n");
+		if (check_struct_tries(tab, ft_list_size(list)))
+			return (0);
+	}
+	return (1);
+}
+
+void 	ft_init(t_list *list)
+{
+	int		i;
+
+	i = 0;
+	while (i < ft_list_size(list))
+	{
+		if (ft_comb(list, i))
+		{
+			printf("SUCCESS");
+			break;
+		}
+		i++;
 	}
 }
