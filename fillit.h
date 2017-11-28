@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/28 12:40:00 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/28 17:58:16 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@
 # include <stdio.h>
 
 # define BUFF_SIZE 4096
-# define ALPHAPOS 65
+
+typedef struct	s_block_sort
+{
+	int numero;
+	int placed;
+	int tried;
+}				t_block_sort;
 
 t_list  *is_file_valid(char *file);
 char    *block_parser(char *b);
@@ -34,6 +40,7 @@ int     ft_alphablock(char **grid, char c);
 void	ft_eraseblock(char **frid, char c);
 char	**ft_tabcreator(int size);
 int		ft_placenext(char *block, char **grid, int limit, char letter);
-void 	ft_comb(int nbr, t_list *list);
+int 	ft_comb(t_list *list, int j);
+void 	ft_init(t_list *list);
 
 #endif
