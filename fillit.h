@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/28 17:58:16 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:30:05 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int     ft_alphablock(char **grid, char c);
 void	ft_eraseblock(char **frid, char c);
 char	**ft_tabcreator(int size);
 int		ft_placenext(char *block, char **grid, int limit, char letter);
-int 	ft_comb(t_list *list, int j);
+void 	ft_comb(int nbr, t_list *list);
+int		ft_compare(char **grid, char **newgrid);
 void 	ft_init(t_list *list);
 
 #endif
