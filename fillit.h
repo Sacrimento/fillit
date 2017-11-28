@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/28 12:40:00 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/28 17:08:09 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <stdio.h>
 
 # define BUFF_SIZE 4096
-# define ALPHAPOS 65
 
 t_list  *is_file_valid(char *file);
 char    *block_parser(char *b);
@@ -35,5 +34,6 @@ void	ft_eraseblock(char **frid, char c);
 char	**ft_tabcreator(int size);
 int		ft_placenext(char *block, char **grid, int limit, char letter);
 void 	ft_comb(int nbr, t_list *list);
+int		ft_compare(char **grid, char **newgrid);
 
 #endif
