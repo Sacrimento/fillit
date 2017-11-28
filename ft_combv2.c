@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/28 20:18:45 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/28 20:22:06 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static void mark_as_notset(struct s_block_sort);
 
 int combv2(struct s_block_sort *maintab, int start)
 {
-	int local_start;
-
 	if (end_of_tab(maintab[start]))
 		return (0);
 	if (!is_blocks_left(maintab))
@@ -41,14 +39,12 @@ int combv2(struct s_block_sort *maintab, int start)
 		combv2(maintab, start + 1);
 	else
 		mark_as_set(maintab[start]);
-	local_start = start;
-	start = 0;
-	if (combv2(maintab, start))
+	if (combv2(maintab, 0))
 		return (1);
 	else
 	{
-		mark_as_notset(maintab[local_start]);
-		combv2(maintab, local_start + 1);
+		mark_as_notset(maintab[start]);
+		combv2(maintab, start + 1);
 	}
 	return (0);
 }
