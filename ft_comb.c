@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 12:05:28 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/28 17:57:38 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:54:20 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,30 @@ void 	ft_print_struct(t_block_sort *tab, int size)
 	}
 }
 
+void 	ft_clear_right(t_block_sort *tab, int size)
+{
+	int		i = 0;
+	while (i < size)
+	{
+		(tab[i]).tried = 0;
+		i++;
+	}
+}
+
+int 	ft_check_right(t_block_sort *tab, int size)
+{
+	int		i;
+
+	i = 0;
+	while (i < size)
+	{
+		if ((tab[i]).tried == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int		ft_comb(t_list *list, int j)
 {
 	int		i;
@@ -107,7 +131,14 @@ int		ft_comb(t_list *list, int j)
 		ft_print_struct(tab, ft_list_size(list));
 		(tab[i]).tried = 1;
 		if (!(ft_placenext((ft_list_at(list, (tab[i]).numero))->content, grid, 15, (ft_list_at(list, (tab[i]).numero))->letter)))
+		{
 			ft_tab_swap(tab, ft_list_size(list));
+			if (ft_check_right(&(tab[i]), ft_list_size(list) - i))
+			{
+				ft_clear_right(&(tab[i]), ft_list_size(list) - i);
+				i--;
+			}
+		}
 		else
 			(tab[i++]).placed = 1;
 		ft_print_split(grid);
@@ -126,9 +157,15 @@ void 	ft_init(t_list *list)
 	{
 		if (ft_comb(list, i))
 		{
-			printf("SUCCESS");
-			break;
+			printf("SUCCESS\n");
+			i = ft_list_size(list) + 12;
+			return ;
 		}
 		i++;
+		if (i == ft_list_size(list))
+		{
+			printf("FAILURE GROS NOOB\n");
+			return;
+		}
 	}
 }
