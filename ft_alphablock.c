@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_alphablock.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:45:54 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/22 16:33:07 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/28 13:25:01 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_alphablock(char **grid, char c)
 	countl = 0;
 	countr = 0;
 	counthash = 0;
-	while (grid[countl] && counthash <= 4)
+	while (grid[countl] && counthash < 4)
 	{
 		while (grid[countl][countr])
 		{

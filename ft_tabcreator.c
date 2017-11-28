@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tabcreator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 14:36:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 16:12:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/28 13:39:11 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ char **ft_tabcreator(int size)
 		if ((line = ft_strnew(size)) && grid)
 		{
 			ft_memset(line, '.', size);
-			grid[count] = &line[0];
+			grid[count] = line;
 		}
 		count++;
 	}
 	grid[count] = 0;
 	return (grid);
 }
-

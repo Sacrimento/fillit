@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_placenext.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 17:04:16 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/28 13:54:11 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ int			ft_placenext(char *block, char **grid, int limit, char letter)
 	if ((coord = nextpos(grid, limit))
 			&& ft_placeblock(block, grid, coord[0], coord[1])
 			&& ft_alphablock(grid, letter) && test_limit(grid, limit))
-		return (1);
+			{
+				printf("line:%d row:%d\n", coord[0], coord[1]);
+				return (1);
+			}
 	else
 		ft_eraseblock(grid, letter);
 	return (0);

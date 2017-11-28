@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_placeblock.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 13:53:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/27 16:33:43 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/28 12:14:13 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int			ft_placeblock(char *block, char **grid, int line, int row)
 	int placeres;
 
 	placeres = 0;
+	if (line < 0 || row < 0)
+		return (0);
 	if (!block[0])
 		placeres = 1;
 	if (grid[line][row] && ft_isalpha(grid[line][row]))

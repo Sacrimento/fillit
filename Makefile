@@ -6,7 +6,7 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/11/25 17:38:51 by abouvero         ###   ########.fr        #
+#    Updated: 2017/11/28 13:13:18 by abouvero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,13 @@ NAME = fillit
 SRC = main.c \
 	  parser.c \
       file_checker.c \
+	  ft_comb.c \
+	  ft_eraseblock.c \
+	  ft_placeblock.c \
+	  ft_placenext.c \
+	  ft_alphablock.c \
+	  ft_tabcreator.c \
+	  ft_print_split.c
 
 FLAGS = -Wall -Werror -Wextra
 LIBDIR = ./libft/
@@ -22,7 +29,7 @@ LIBFT = ./libft/libft.a
 OBJDIR = ./obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-all: wow $(OBJDIR) $(LIBFT) $(NAME)
+all: $(OBJDIR) $(LIBFT) $(NAME)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
@@ -35,15 +42,6 @@ $(NAME): $(OBJ)
 
 $(LIBFT):
 	@make -C $(LIBDIR)
-
-wow:
-	@echo "  _____.__.__  .__  .__  __                                .__.__  .__                 "
-	@echo "_/ ____\__|  | |  | |__|/  |_    ____  ____   _____ ______ |__|  | |__| ____    ____   "
-	@echo "\   __\|  |  | |  | |  \   __\ _/ ___\/  _ \ /     \\____ \|  |  | |  |/    \  / ___\  "
-	@echo " |  |  |  |  |_|  |_|  ||  |   \  \__(  <_> )  Y Y  \  |_> >  |  |_|  |   |  \/ /_/  > "
-	@echo " |__|  |__|____/____/__||__|    \___  >____/|__|_|  /   __/|__|____/__|___|  /\___  /  "
-	@echo "                                    \/            \/|__|                   \//_____/   "
-	@echo ""
 
 clean:
 	@rm -rf $(OBJDIR)
