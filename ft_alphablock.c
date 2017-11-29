@@ -6,34 +6,31 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:45:54 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/28 13:25:01 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/29 18:27:51 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_alphablock(char **grid, char c)
+void	ft_alphablock(char **grid, char c)
 {
-	int countl;
-	int countr;
+	int line;
+	int row;
 	int counthash;
 
-	countl = 0;
-	countr = 0;
+	line = 0;
+	row = 0;
 	counthash = 0;
-	while (grid[countl] && counthash < 4)
+	while (grid[line] && counthash < 4)
 	{
-		while (grid[countl][countr])
+		while (grid[line][row])
 		{
-			if (grid[countl][countr] == '#')
+			if (grid[line][row] == '#')
 			{
-				grid[countl][countr] = c;
+				grid[line][row] = c;
 				counthash++;
 			}
-			countr++;
+			row++;
 		}
-		countr = 0;
-		countl++;
+		row = 0;
+		line++;
 	}
-	if (counthash == 4)
-		return (1);
-	return (0);
 }
