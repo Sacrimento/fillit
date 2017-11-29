@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/28 20:22:06 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:14:35 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void mark_as_notset(struct s_block_sort);
  * ///////////////=================================================
  */
 
+//we just need to add the bect solution checkers
+
 int combv2(struct s_block_sort *maintab, int start)
 {
 	if (end_of_tab(maintab[start]))
@@ -38,12 +40,12 @@ int combv2(struct s_block_sort *maintab, int start)
 	if (!ft_placenext(maintab[start]))
 		combv2(maintab, start + 1);
 	else
-		mark_as_set(maintab[start]);
+		maintab[start] = mark_as_set(maintab[start]);
 	if (combv2(maintab, 0))
 		return (1);
 	else
 	{
-		mark_as_notset(maintab[start]);
+		maintab[start] = mark_as_notset(maintab[start]);
 		combv2(maintab, start + 1);
 	}
 	return (0);
