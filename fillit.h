@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/28 18:30:05 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 10:59:04 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct	s_block_sort
 {
 	int numero;
 	int placed;
-	int tried;
 }				t_block_sort;
 
 t_list  *is_file_valid(char *file);

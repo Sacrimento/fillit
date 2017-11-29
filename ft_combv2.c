@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_combv2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/28 20:22:06 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:13:40 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static int is_blocks_left(struct *s_block_sort);
-static int already_set(struct s_block_sort);
-static void mark_as_set(struct s_block_sort);
-static void mark_as_notset(struct s_block_sort);
 
 /* ft_combv2 a combinasion generator with recursive backtracking
  * ///////////////=================================================
@@ -25,6 +20,39 @@ static void mark_as_notset(struct s_block_sort);
  * it but it use to help me visualise the current action
  * ///////////////=================================================
  */
+
+static int			is_blocks_left(t_block_sort *tab)
+{
+	int		i;
+
+	i = 0;
+	while (tab[i])
+	{
+		if (!((tab[i]).placed))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int			already_set(t_block_sort block)
+{
+	if (block.placed)
+		return (1);
+	return (0);
+}
+
+static t_block_sort	mark_as_set(t_block_sort block)
+{
+	block.placed = 1;
+	return (block);
+}
+
+static t_block_sort	mark_as_nset(t_block_sort block)
+{
+	block.placed = 0;
+	return (block);
+}
 
 int combv2(struct s_block_sort *maintab, int start)
 {
