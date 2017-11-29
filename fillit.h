@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/28 18:30:05 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:46:24 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 
 typedef struct	s_block_sort
 {
-	int numero;
-	int placed;
-	int tried;
+	int		numero;
+	int		placed;
+	char	*block;
 }				t_block_sort;
 
 t_list  *is_file_valid(char *file);
@@ -40,8 +40,10 @@ int     ft_alphablock(char **grid, char c);
 void	ft_eraseblock(char **frid, char c);
 char	**ft_tabcreator(int size);
 int		ft_placenext(char *block, char **grid, int limit, char letter);
-void 	ft_comb(int nbr, t_list *list);
+//void 	ft_comb(int nbr, t_list *list);
 int		ft_compare(char **grid, char **newgrid);
-void 	ft_init(t_list *list);
+void 	ft_controller(t_list *list);
+int		combv2(t_block_sort *maintab, int start, char **grid);
+
 
 #endif

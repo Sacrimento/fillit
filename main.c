@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:22:08 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/28 17:57:52 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:46:30 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int				main(int argc, char **argv)
 		return (1);
 	}
 	tetriminos = check_parse(argv[1]);
-	ft_init(tetriminos);
+	ft_controller(tetriminos);
 	return (0);
 }

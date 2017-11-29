@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_combv2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 11:14:35 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 14:00:53 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static int is_blocks_left(struct *s_block_sort);
-static int already_set(struct s_block_sort);
-static void mark_as_set(struct s_block_sort);
-static void mark_as_notset(struct s_block_sort);
 
 /* ft_combv2 a combinasion generator with recursive backtracking
  * ///////////////=================================================
@@ -26,27 +21,88 @@ static void mark_as_notset(struct s_block_sort);
  * ///////////////=================================================
  */
 
-//we just need to add the bect solution checkers
+/* trying a first time, and give the new limit as reference for another loop,
+ * if the program fails with the new limits it means we got the perfect solution
+ */
 
-int combv2(struct s_block_sort *maintab, int start)
+static int			is_blocks_left(t_block_sort *tab)
 {
-	if (end_of_tab(maintab[start]))
-		return (0);
+	int		i;
+
+	i = 0;
+	while ((tab[i]).numero != 42)
+	{
+		if (!((tab[i]).placed))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static int			tab_size(t_block_sort *tab)
+{
+	int		i;
+
+	i = 0;
+	while ((tab[i]).numero != 42)
+		i++;
+	return (i - 1);
+}
+
+
+static int			already_set(t_block_sort block)
+{
+	if (block.placed)
+		return (1);
+	return (0);
+}
+
+static t_block_sort	mark_as_set(t_block_sort block)
+{
+	block.placed = 1;
+	return (block);
+}
+
+static t_block_sort	mark_as_notset(t_block_sort block)
+{
+	block.placed = 0;
+	return (block);
+}
+
+int combv2(t_block_sort *maintab, int start, char **grid)
+{
 	if (!is_blocks_left(maintab))
 		return (1);
-	while (!already_set(maintab[start]))
+	if (start > tab_size(maintab) || (maintab[start]).numero == 42)
+		return (0);
+	while (start < tab_size(maintab) && already_set(maintab[start]))
+	{
+		printf("already_set, move trought the array case : %d\n", start);
 		start++;
-//if we can't place this block, we are retring the current recursion with another start
-	if (!ft_placenext(maintab[start]))
-		combv2(maintab, start + 1);
+	}
+	if	(!ft_placenext((maintab[start]).block, grid, 19, (maintab[start]).numero + 65))
+	{
+		printf("placement failed for %s, retry with another block\n", (maintab[start]).block);
+		return (combv2(maintab, start + 1, grid));
+	}
 	else
+	{
+		printf("success of placement : %s\n", (maintab[start]).block);
 		maintab[start] = mark_as_set(maintab[start]);
-	if (combv2(maintab, 0))
+		ft_print_split(grid);
+	}
+	if (combv2(maintab, 0, grid))
+	{
+		printf("success of next recursion\n");
 		return (1);
+	}
 	else
 	{
 		maintab[start] = mark_as_notset(maintab[start]);
-		combv2(maintab, start + 1);
+		ft_eraseblock(grid, (maintab[start]).numero + 65);
+		printf("retry after fail\n");
+		return (combv2(maintab, start + 1, grid));
 	}
+	printf("global fail");
 	return (0);
 }
