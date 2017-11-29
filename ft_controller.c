@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 13:49:40 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 16:01:22 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,21 @@ static t_block_sort	*struct_init(t_list *list)
 	begin = list;
 	while (i < ft_list_size(begin))
 	{
-		(tab[i]).numero = i;
 		(tab[i]).block = ft_strdup(list->content);
 		list = list->next;
 		(tab[i]).placed = 0;
 		i++;
 	}
-	(tab[i]).numero = 42;
 	(tab[i]).placed = 1;
 	(tab[i]).block = NULL;
 	return (tab);
 }
 
-void 	ft_print_struct(t_block_sort *tab)
+static void 	ft_print_struct(t_block_sort *tab)
 {
 	int		i = 0;
-	while ((tab[i]).numero != 42)
+	while ((tab[i]).block)
 	{
-		printf("[NUMERO : %d] ", (tab[i]).numero);
 		printf("[PLACED : %d] ", (tab[i]).placed);
 		printf("[BLOCK : %s]\n", (tab[i]).block);
 		i++;
@@ -56,6 +53,7 @@ void ft_controller(t_list *list)
 	ft_print_struct(maintab);
 	ft_print_list(list);
 	grid = ft_tabcreator(20);
-	combv2(maintab, 0, grid);
+	if (!(combv2(maintab, 0, grid, 15)))
+			printf("Failure\n");
 	ft_print_split(grid);
 }

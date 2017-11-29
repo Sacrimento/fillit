@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 14:00:53 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 16:03:25 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int			is_blocks_left(t_block_sort *tab)
 	int		i;
 
 	i = 0;
-	while ((tab[i]).numero != 42)
+	while ((tab[i]).block)
 	{
 		if (!((tab[i]).placed))
 			return (1);
@@ -44,11 +44,10 @@ static int			tab_size(t_block_sort *tab)
 	int		i;
 
 	i = 0;
-	while ((tab[i]).numero != 42)
+	while ((tab[i]).block)
 		i++;
 	return (i - 1);
 }
-
 
 static int			already_set(t_block_sort block)
 {
@@ -69,40 +68,32 @@ static t_block_sort	mark_as_notset(t_block_sort block)
 	return (block);
 }
 
-int combv2(t_block_sort *maintab, int start, char **grid)
+int combv2(t_block_sort *maintab, int start, char **grid, int limit)
 {
 	if (!is_blocks_left(maintab))
 		return (1);
-	if (start > tab_size(maintab) || (maintab[start]).numero == 42)
-		return (0);
 	while (start < tab_size(maintab) && already_set(maintab[start]))
-	{
-		printf("already_set, move trought the array case : %d\n", start);
 		start++;
-	}
-	if	(!ft_placenext((maintab[start]).block, grid, 19, (maintab[start]).numero + 65))
+	if (start > tab_size(maintab) || !(maintab[start]).block)
+		return (0);
+	if	(already_set(maintab[start]))
+		return (0);
+	if (!ft_placenext((maintab[start]).block, grid, limit, start + 65))
 	{
-		printf("placement failed for %s, retry with another block\n", (maintab[start]).block);
-		return (combv2(maintab, start + 1, grid));
+		if (start + 1 > tab_size(maintab))
+			return (0);
+		return (combv2(maintab, start + 1, grid, limit));
 	}
-	else
-	{
-		printf("success of placement : %s\n", (maintab[start]).block);
+	else 
 		maintab[start] = mark_as_set(maintab[start]);
-		ft_print_split(grid);
-	}
-	if (combv2(maintab, 0, grid))
-	{
-		printf("success of next recursion\n");
+	ft_print_split(grid); ////////////////==========REMOVE THIS============
+	if (combv2(maintab, 0, grid, limit))
 		return (1);
-	}
 	else
 	{
 		maintab[start] = mark_as_notset(maintab[start]);
-		ft_eraseblock(grid, (maintab[start]).numero + 65);
-		printf("retry after fail\n");
-		return (combv2(maintab, start + 1, grid));
+		ft_eraseblock(grid, start + 65);
+		return (combv2(maintab, start + 1, grid, limit));
 	}
-	printf("global fail");
 	return (0);
 }
