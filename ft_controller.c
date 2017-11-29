@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 16:01:22 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 16:26:05 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_block_sort	*struct_init(t_list *list)
 	(tab[i]).block = NULL;
 	return (tab);
 }
-
+/*
 static void 	ft_print_struct(t_block_sort *tab)
 {
 	int		i = 0;
@@ -42,7 +42,7 @@ static void 	ft_print_struct(t_block_sort *tab)
 		printf("[BLOCK : %s]\n", (tab[i]).block);
 		i++;
 	}
-}
+}*/
 
 void ft_controller(t_list *list)
 {
@@ -50,9 +50,9 @@ void ft_controller(t_list *list)
 	t_block_sort	*maintab;
 
 	maintab = struct_init(list);
-	ft_print_struct(maintab);
-	ft_print_list(list);
-	grid = ft_tabcreator(20);
+/*	ft_print_struct(maintab);
+	ft_print_list(list); */
+	grid = ft_tabcreator(7);
 	if (!(combv2(maintab, 0, grid, 15)))
 			printf("Failure\n");
 	ft_print_split(grid);
