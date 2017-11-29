@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 16:21:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 20:07:13 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 
 /* ft_combv2 a combinasion generator with recursive backtracking
  * ///////////////=================================================
- * maintab is a struct array with the blocks in alphabetic order
- * curentab was a fresh tab large as maintab where we stored the current combinasion
- * trough the recursion, quite useless : I try to do the job without
- * it but it use to help me visualise the current action
- * ///////////////=================================================
- */
-
-/* trying a first time, and give the new limit as reference for another loop,
+ * maintab is a struct array with the blocks in alphabetic orderi
+ * TODO :
+ * trying a first lop then give the new limit as reference for another loop,
  * if the program fails with the new limits it means we got the perfect solution
+ * ///////////////=================================================
  */
 
 static int			is_blocks_left(t_block_sort *tab)
@@ -68,7 +64,7 @@ static t_block_sort	mark_as_notset(t_block_sort block)
 	return (block);
 }
 
-int combv2(t_block_sort *maintab, int start, char **grid, int limit)
+int	ft_combination(t_block_sort *maintab, int start, char **grid, int limit)
 {
 	if (!is_blocks_left(maintab))
 		return (1);
@@ -82,18 +78,17 @@ int combv2(t_block_sort *maintab, int start, char **grid, int limit)
 	{
 		if (start + 1 > tab_size(maintab))
 			return (0);
-		return (combv2(maintab, start + 1, grid, limit));
+		return (ft_combination(maintab, start + 1, grid, limit));
 	}
 	else 
 		maintab[start] = mark_as_set(maintab[start]);
-	ft_print_split(grid); ////////////////==========REMOVE THIS============
-	if (combv2(maintab, 0, grid, limit))
+	if (ft_combination(maintab, 0, grid, limit))
 		return (1);
 	else
 	{
 		maintab[start] = mark_as_notset(maintab[start]);
 		ft_eraseblock(grid, start + 65);
-		return (combv2(maintab, start + 1, grid, limit));
+		return (ft_combination(maintab, start + 1, grid, limit));
 	}
 	return (0);
 }

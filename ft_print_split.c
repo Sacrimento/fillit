@@ -1,14 +1,20 @@
 #include "libft/libft.h"
 
-void	ft_print_split(char **tab)
+void	ft_print_split(char **tab, int limit)
 {
-	int cursor;
+	int line;
+	int row;
 
-	cursor = 0;
-	while (tab[cursor] != 0)
+	line = 0;
+	row = 0;
+	while (line < limit)
 	{
-		ft_putstr(tab[cursor]);
-		ft_putchar('\n');
-		cursor++;
+		while (row < limit)
+		{
+			ft_putchar(tab[line][row++]);
+			ft_putchar('\n');
+		}
+		line++;
+		row = 0;
 	}
 }

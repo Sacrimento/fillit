@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 17:44:02 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 20:06:52 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,25 @@ void ft_controller(t_list *list)
 {
 	char			**grid;
 	t_block_sort	*maintab;
+	int				limit;
+	int				result;
 
+
+	limit = TAB_SIZE;
+	result = 0;
+
+	grid = ft_tabcreator(TAB_SIZE);
 	maintab = struct_init(list);
 	ft_print_struct(maintab);
 	ft_print_list(list);
-	grid = ft_tabcreator(20);
-	if (!(combv2(maintab, 0, grid, 15)))
-			printf("Failure\n");
-	ft_print_split(grid);
+
+	while (ft_combination(maintab, 0, grid, limit))
+	{
+		limit = (ft_gridsize(grid) < limit ? ft_gridsize(grid) : limit);
+		ft_memdel((void**)grid);
+		grid = ft_tabcreator(TAB_SIZE);
+		limit--;
+	}
+	ft_combination(maintab, 0, grid, limit);
+	ft_print_split(grid, limit);
 }

@@ -6,7 +6,7 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/11/29 11:59:30 by mfonteni         ###   ########.fr        #
+#    Updated: 2017/11/29 20:02:20 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = main.c \
 	  ft_alphablock.c \
 	  ft_tabcreator.c \
 	  ft_print_split.c \
-	  ft_controller.c
+	  ft_controller.c \
+	  ft_gridsize.c
 
 FLAGS = -Wall -Werror -Wextra
 LIBDIR = ./libft/
