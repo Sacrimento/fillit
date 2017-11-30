@@ -1,3 +1,4 @@
 fillit
 */*.o
 *.o
+libft/libft.a
