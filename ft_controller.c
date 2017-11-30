@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   controller.c                                       :+:      :+:    :+:   */
+/*   ft_controller.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 16:01:22 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:00:42 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static t_block_sort	*struct_init(t_list *list)
 		(tab[i]).placed = 0;
 		i++;
 	}
+	ft_lstdel(begin);
 	(tab[i]).placed = 1;
 	(tab[i]).block = NULL;
 	return (tab);
