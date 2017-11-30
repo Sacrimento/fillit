@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:54:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/30 17:00:41 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 18:40:38 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ static int		valid_char(char c)
 	if (c == '.' || c == '#' || c == '\n')
 		return (1);
 	return (0);
+}
+
+static void		check_file_errors(char *file, int nl, int i)
+{
+	if (!(valid_char(file[i])))
+		error();
+	if (nl == 4 && (file[i] != '\n' || !file[i]))
+		error();
 }
 
 static char		*is_block_valid(char *block, int i, int nl)
@@ -59,8 +67,7 @@ t_list			*is_file_valid(char *file)
 	list = NULL;
 	while (file[i])
 	{
-		if (!(valid_char(file[i])) || (nl == 4 && (file[i] != '\n' || !file[i])))
-			error();
+		check_file_errors(file, nl, i);
 		if (file[i] == '\n')
 			nl++;
 		else if (i == 0 || nl == 5)
@@ -71,7 +78,7 @@ t_list			*is_file_valid(char *file)
 		}
 		i++;
 	}
-	if (!file[0] || (file[i - 1] == '\n' && file[i - 2] == '\n'))
+	if (nl != 4 || !file[0] || (file[i - 1] == '\n' && file[i - 2] == '\n'))
 		error();
 	return (list);
 }
