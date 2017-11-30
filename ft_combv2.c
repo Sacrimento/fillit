@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 11:56:32 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 13:22:12 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@
 int	ft_combination(t_block_sort *maintab, int start, char **grid, int limit)
 {
 	if (!is_blocks_left(maintab))
+	{
+		printf("done\n");
 		return (1);
+	}
 	while (start < tab_size(maintab) && already_set(maintab[start]))
 		start++;
 	if (start > tab_size(maintab) || !(maintab[start]).block)
@@ -40,7 +43,10 @@ int	ft_combination(t_block_sort *maintab, int start, char **grid, int limit)
 	else
 		maintab[start] = mark_as_set(maintab[start]);
 	if (ft_combination(maintab, 0, grid, limit))
+	{
+		printf("success of all recursions\n");
 		return (1);
+	}
 	else
 	{
 		maintab[start] = mark_as_notset(maintab[start]);

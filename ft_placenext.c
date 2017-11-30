@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 12:49:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 13:55:13 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	test_limit(char **grid, int limit)
 
 	line = limit;
 	row = 0;
-	while (grid[line][row] && row < limit)
+	while (grid[line][row] && row <= limit)
 	{
 		if (grid[line][row] && ft_isalpha(grid[line][row]))
 			return (0);

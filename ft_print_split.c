@@ -19,9 +19,9 @@ void	ft_print_split(char **tab, int limit)
 
 	line = 0;
 	row = 0;
-	while (line <= limit && line < TAB_SIZE)
+	while (line <= limit && line < TAB_MAX)
 	{
-		while (row <= limit && row < TAB_SIZE)
+		while (row <= limit && row < TAB_MAX)
 			ft_putchar(tab[line][row++]);
 		ft_putchar('\n');
 		line++;
