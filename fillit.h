@@ -40,12 +40,12 @@ void			ft_eraseblock(char **frid, char c);
 char			**ft_tabcreator(int size);
 int				ft_placenext(char *block, char **grid, int limit, char letter);
 void			ft_controller(t_list *list);
-void			ft_print_split(char **tab, int limit);
+void			ft_print_grid(char **tab, int limit);
 int				ft_combination(t_block_sort *maintab, int start,
 													char **grid, int limit);
 int				ft_gridsize(char **grid, int limit);
 int				is_blocks_left(t_block_sort *tab);
-int				tab_size(t_block_sort *block);
+int				block_tab_size(t_block_sort *block);
 int				already_set(t_block_sort block);
 t_block_sort	mark_as_set(t_block_sort block);
 t_block_sort	mark_as_notset(t_block_sort block);

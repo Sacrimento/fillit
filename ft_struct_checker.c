@@ -26,7 +26,7 @@ int				is_blocks_left(t_block_sort *tab)
 	return (0);
 }
 
-int				tab_size(t_block_sort *tab)
+int				block_tab_size(t_block_sort *tab)
 {
 	int		i;
 
