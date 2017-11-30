@@ -6,50 +6,11 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 13:43:44 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/29 18:59:36 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static int	*fill_posarray(int line, int row)
-{
-	int *array;
-
-	array = ft_memalloc(2);
-	array[0] = line;
-	array[1] = row;
-	return (array);
-}
-
-static int	*nextpos(char **grid, int limit)
-{
-	int line;
-	int row;
-	int *res;
-
-	line = limit;
-	row = 0;
-	if (limit == 0)
-		return (!ft_isalpha(grid[0][0]) ? fill_posarray(0, 0) : NULL);
-	if ((res = (nextpos(grid, limit - 1))))
-		return (res);
-	while (row < limit)
-	{
-		if (grid[line][row] && !ft_isalpha(grid[line][row]))
-			return (fill_posarray(line, row));
-		row++;
-	}
-	row = limit;
-	line = 0;
-	while (line <= limit)
-	{
-		if (grid[line][row] && !ft_isalpha(grid[line][row]))
-			return (fill_posarray(line, row));
-		line++;
-	}
-	return (NULL);
-}
 
 static int	test_limit(char **grid, int limit)
 {
@@ -73,15 +34,49 @@ static int	test_limit(char **grid, int limit)
 	return (1);
 }
 
-int			ft_placenext(char *block, char **grid, int limit, char letter)
+static int	chk_place(char *block, char **grid, int line, int row)
 {
-	int *coord;
+	if (grid[line][row] && !ft_isalpha(grid[line][row]) 
+			&& ft_placeblock(block, grid, line, row))
+		return (1);
+	return (0);
+}
 
-	if ((coord = nextpos(grid, limit))
-			&& ft_placeblock(block, grid, coord[0], coord[1])
-			&& ft_alphablock(grid, letter) && test_limit(grid, limit))
+static int	chk_lim(char **grid, char letter, int limit)
+{
+	ft_alphablock(grid, letter);
+	if (test_limit(grid, limit))
+		return (1);
+	ft_eraseblock(grid, letter);
+	return (0);
+}
+
+int			ft_placenext(char *blk, char **grid, int lim, char l)
+{
+	int line;
+	int row;
+	int tmp_lim;
+
+	tmp_lim = -1;
+	while (++tmp_lim <= lim)
+	{
+		line = tmp_lim;
+		row = 0;
+		if (tmp_lim == 0 && chk_place(blk, grid, 0, 0) && chk_lim(grid, l, lim))
+			return (1);
+		while (row < tmp_lim)
+		{
+			if (chk_place(blk, grid, line, row) && chk_lim(grid, l, lim))
 				return (1);
-	else
-		ft_eraseblock(grid, letter);
+			row++;
+		}
+		row = tmp_lim;
+		line = -1;
+		while (++line <= tmp_lim)
+		{
+			if (chk_place(blk, grid, line, row) && chk_lim(grid, l, lim))
+				return (1);
+		}
+	}
 	return (0);
 }

@@ -6,17 +6,16 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:22:08 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/29 17:11:30 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:03:50 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int				error(void)
+void 			error(void)
 {
 	ft_putstr("error\n");
 	exit(1);
-	return (0);
 }
 
 void 			assign_letter(t_list *list)
