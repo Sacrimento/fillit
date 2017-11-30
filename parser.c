@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/30 17:00:35 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 18:11:12 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char		*tetri_parser_exce(char *b)
 	else if (ft_strstr(parsed, "#...##..#"))
 		parsed = "drbd";
 	else if (ft_strstr(parsed, "#..##...#"))
-		parsed = "dlbd";
+		parsed = "rubd";
 	else if (ft_strstr(parsed, "#..###"))
 		parsed = "dlbr";
 	else if (ft_strstr(parsed, "##..##"))

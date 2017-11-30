@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 16:55:49 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 17:33:36 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void		ft_clear_placement(t_block_sort *tab)
 		(tab[count++]).placed = 0;
 
 }
-
+/*
 static void 	ft_print_struct(t_block_sort *tab)
 {
 	int		i = 0;
@@ -55,7 +55,7 @@ static void 	ft_print_struct(t_block_sort *tab)
 		printf("[PLACED : %d] ", (tab[i]).placed);
 		printf("[BLOCK : %s]\n", (tab[i]).block);
 
-}
+}*/
 
 void ft_controller(t_list *list)
 {
@@ -67,9 +67,9 @@ void ft_controller(t_list *list)
 	grid = ft_tabcreator(TAB_MAX);
 	maintab = struct_init(list);
 ///////////////=======================debug==========================
-	ft_print_struct(maintab);
-	ft_print_list(list);
-/*
+//	ft_print_struct(maintab);
+//	ft_print_list(list);
+
 
 	while (ft_combination(maintab, 0, grid, limit))
 	{
@@ -88,8 +88,6 @@ void ft_controller(t_list *list)
 		ft_memdel((void**)grid);
 		grid = ft_tabcreator(TAB_MAX);
 		ft_combination(maintab, 0, grid, ++limit);
-	}*/
-	printf("%d", ft_combination(maintab, 0, grid, 3));
-	ft_print_grid(grid, 3);
-		ft_clear_placement(maintab);
+	}
+	ft_print_grid(grid, limit);
 }
