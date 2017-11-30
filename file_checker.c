@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:54:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/30 11:32:01 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 13:53:38 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ t_list			*is_file_valid(char *file)
 		}
 		i++;
 	}
+	if (file[i - 1] == '\n' && file[i - 2] == '\n')
+		error();
 	return (list);
 }
