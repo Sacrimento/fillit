@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:54:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/30 13:53:38 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 17:00:41 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ t_list			*is_file_valid(char *file)
 	i = 0;
 	nl = 0;
 	list = NULL;
-	while (file[i] && valid_char(file[i]))
+	while (file[i])
 	{
+		if (!(valid_char(file[i])) || (nl == 4 && (file[i] != '\n' || !file[i])))
+			error();
 		if (file[i] == '\n')
 			nl++;
 		else if (i == 0 || nl == 5)
@@ -69,7 +71,7 @@ t_list			*is_file_valid(char *file)
 		}
 		i++;
 	}
-	if (file[i - 1] == '\n' && file[i - 2] == '\n')
+	if (!file[0] || (file[i - 1] == '\n' && file[i - 2] == '\n'))
 		error();
 	return (list);
 }
