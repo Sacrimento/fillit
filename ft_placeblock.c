@@ -36,7 +36,7 @@ int			ft_placeblock(char *block, char **grid, int line, int row)
 		return (0);
 	if (!block[0])
 		placeres = 1;
-	if (grid[line][row] && ft_isalpha(grid[line][row]))
+	if (!grid[line][row] || ft_isalpha(grid[line][row]))
 		return (0);
 	if (grid[line][row])
 	{
