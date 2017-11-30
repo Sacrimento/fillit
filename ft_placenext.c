@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 13:55:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 16:14:35 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	test_limit(char **grid, int limit)
 
 	line = limit;
 	row = 0;
-	while (grid[line][row] && row <= limit)
+	while (grid[line][row] && row < limit)
 	{
 		if (grid[line][row] && ft_isalpha(grid[line][row]))
 			return (0);
@@ -45,7 +45,7 @@ static int	chk_place(char *block, char **grid, int line, int row)
 static int	chk_lim(char **grid, char letter, int limit)
 {
 	ft_alphablock(grid, letter);
-	if (test_limit(grid, limit))
+	if (test_limit(grid, limit + 1))
 		return (1);
 	ft_eraseblock(grid, letter);
 	return (0);
@@ -60,18 +60,18 @@ int			ft_placenext(char *blk, char **grid, int lim, char l)
 	tmp_lim = -1;
 	while (++tmp_lim <= lim)
 	{
-		line = tmp_lim;
-		row = -1;
-		if (tmp_lim == 0 && chk_place(blk, grid, 0, 0) && chk_lim(grid, l, lim))
+		row = tmp_lim;
+		line = -1;
+		if (chk_place(blk, grid, 0, 0) && chk_lim(grid, l, lim))
 			return (1);
-		while (++row < tmp_lim)
+		while (++line < tmp_lim)
 		{
 			if (chk_place(blk, grid, line, row) && chk_lim(grid, l, lim))
 				return (1);
 		}
-		row = tmp_lim;
-		line = -1;
-		while (++line <= tmp_lim)
+		row = -1;
+		line = tmp_lim;
+		while (++row <= tmp_lim)
 		{
 			if (chk_place(blk, grid, line, row) && chk_lim(grid, l, lim))
 				return (1);

@@ -6,7 +6,7 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/11/30 11:52:19 by abouvero         ###   ########.fr        #
+#    Updated: 2017/11/30 15:18:01 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ NAME = fillit
 SRC = main.c \
 	  parser.c \
       file_checker.c \
-	  ft_combv2.c \
+	  ft_combination.c \
 	  ft_eraseblock.c \
 	  ft_placeblock.c \
 	  ft_placenext.c \
 	  ft_alphablock.c \
 	  ft_tabcreator.c \
-	  ft_print_split.c \
+	  ft_print_grid.c \
 	  ft_controller.c \
 	  ft_gridsize.c \
 	  ft_struct_checker.c

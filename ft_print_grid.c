@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_split.c                                   :+:      :+:    :+:   */
+/*   ft_print_grid.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 16:49:11 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/16 16:50:16 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/30 11:24:28 by abouvero          #+#    #+#             */
+/*   Updated: 2017/11/30 15:20:34 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	ft_print_split(char **tab)
+void	ft_print_grid(char **tab, int limit)
 {
-	int cursor;
+	int line;
+	int row;
 
-	cursor = 0;
-	while (tab[cursor] != 0)
+	line = -1;
+	row = 0;
+	while (++line <= limit && line < TAB_MAX)
 	{
-		ft_putstr(tab[cursor]);
+		while (row <= limit && row < TAB_MAX)
+			ft_putchar(tab[line][row++]);
 		ft_putchar('\n');
-		cursor++;
+		row = 0;
 	}
 }
