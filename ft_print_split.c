@@ -1,4 +1,4 @@
-#include "libft/libft.h"
+#include "fillit.h"
 
 void	ft_print_split(char **tab, int limit)
 {
@@ -7,13 +7,11 @@ void	ft_print_split(char **tab, int limit)
 
 	line = 0;
 	row = 0;
-	while (line < limit)
+	while (line < limit && line < TAB_SIZE)
 	{
-		while (row < limit)
-		{
+		while (row < limit && row < TAB_SIZE)
 			ft_putchar(tab[line][row++]);
-			ft_putchar('\n');
-		}
+		ft_putchar('\n');
 		line++;
 		row = 0;
 	}

@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 18:59:36 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 12:03:50 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static int	test_limit(char **grid, int limit)
 
 	line = limit;
 	row = 0;
-	while (row < limit)
+	while (grid[line][row] && row < limit)
 	{
 		if (grid[line][row] && ft_isalpha(grid[line][row]))
 			return (0);
 		row++;
 	}
-	while (line >= 0)
+	while (line >= 0 && grid[line][row])
 	{
 		if (grid[line][row] && ft_isalpha(grid[line][row]))
 			return (0);
@@ -36,7 +36,7 @@ static int	test_limit(char **grid, int limit)
 
 static int	chk_place(char *block, char **grid, int line, int row)
 {
-	if (grid[line][row] && !ft_isalpha(grid[line][row]) 
+	if (grid[line][row] && !ft_isalpha(grid[line][row])
 			&& ft_placeblock(block, grid, line, row))
 		return (1);
 	return (0);
@@ -45,6 +45,7 @@ static int	chk_place(char *block, char **grid, int line, int row)
 static int	chk_lim(char **grid, char letter, int limit)
 {
 	ft_alphablock(grid, letter);
+	ft_print_split(grid, 20);
 	if (test_limit(grid, limit))
 		return (1);
 	ft_eraseblock(grid, letter);
@@ -61,14 +62,13 @@ int			ft_placenext(char *blk, char **grid, int lim, char l)
 	while (++tmp_lim <= lim)
 	{
 		line = tmp_lim;
-		row = 0;
+		row = -1;
 		if (tmp_lim == 0 && chk_place(blk, grid, 0, 0) && chk_lim(grid, l, lim))
 			return (1);
-		while (row < tmp_lim)
+		while (++row < tmp_lim)
 		{
 			if (chk_place(blk, grid, line, row) && chk_lim(grid, l, lim))
 				return (1);
-			row++;
 		}
 		row = tmp_lim;
 		line = -1;

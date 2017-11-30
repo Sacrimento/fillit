@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 20:06:52 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 12:04:36 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void ft_controller(t_list *list)
 	int				result;
 
 
-	limit = TAB_SIZE;
+	limit = TAB_SIZE - 1;
 	result = 0;
 
 	grid = ft_tabcreator(TAB_SIZE);
