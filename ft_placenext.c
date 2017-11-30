@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 16:14:35 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 16:52:44 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,20 @@ int			ft_placenext(char *blk, char **grid, int lim, char l)
 	tmp_lim = -1;
 	while (++tmp_lim <= lim)
 	{
-		row = tmp_lim;
-		line = -1;
-		if (chk_place(blk, grid, 0, 0) && chk_lim(grid, l, lim))
-			return (1);
-		while (++line < tmp_lim)
-		{
-			if (chk_place(blk, grid, line, row) && chk_lim(grid, l, lim))
-				return (1);
-		}
 		row = -1;
-		line = tmp_lim;
-		while (++row <= tmp_lim)
+		line = -1;
+		while (++line <= tmp_lim)
 		{
-			if (chk_place(blk, grid, line, row) && chk_lim(grid, l, lim))
-				return (1);
+			while (++row <= tmp_lim)
+			{
+				if (chk_place(blk, grid, line, row) && chk_lim(grid, l, lim))
+				{
+					ft_print_grid(grid, lim);
+					printf("\n");
+					return (1);
+				}
+			}
+			row = -1;
 		}
 	}
 	return (0);
