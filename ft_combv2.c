@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 20:07:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:56:32 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,49 +21,6 @@
  * ///////////////=================================================
  */
 
-static int			is_blocks_left(t_block_sort *tab)
-{
-	int		i;
-
-	i = 0;
-	while ((tab[i]).block)
-	{
-		if (!((tab[i]).placed))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-static int			tab_size(t_block_sort *tab)
-{
-	int		i;
-
-	i = 0;
-	while ((tab[i]).block)
-		i++;
-	return (i - 1);
-}
-
-static int			already_set(t_block_sort block)
-{
-	if (block.placed)
-		return (1);
-	return (0);
-}
-
-static t_block_sort	mark_as_set(t_block_sort block)
-{
-	block.placed = 1;
-	return (block);
-}
-
-static t_block_sort	mark_as_notset(t_block_sort block)
-{
-	block.placed = 0;
-	return (block);
-}
-
 int	ft_combination(t_block_sort *maintab, int start, char **grid, int limit)
 {
 	if (!is_blocks_left(maintab))
@@ -72,7 +29,7 @@ int	ft_combination(t_block_sort *maintab, int start, char **grid, int limit)
 		start++;
 	if (start > tab_size(maintab) || !(maintab[start]).block)
 		return (0);
-	if	(already_set(maintab[start]))
+	if (already_set(maintab[start]))
 		return (0);
 	if (!ft_placenext((maintab[start]).block, grid, limit, start + 65))
 	{
@@ -80,7 +37,7 @@ int	ft_combination(t_block_sort *maintab, int start, char **grid, int limit)
 			return (0);
 		return (ft_combination(maintab, start + 1, grid, limit));
 	}
-	else 
+	else
 		maintab[start] = mark_as_set(maintab[start]);
 	if (ft_combination(maintab, 0, grid, limit))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 19:53:17 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 20:00:31 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:25:42 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_gridsize(char **grid)
 				return (limit);
 			row++;
 		}
-	
 		while (line >= 0)
 		{
 			if (grid[line][row] && ft_isalpha(grid[line][row]))

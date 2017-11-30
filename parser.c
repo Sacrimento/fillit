@@ -6,13 +6,13 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/30 10:59:12 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:20:56 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char		*remove_nl(char *b)
+static char		*remove_nl(char *b)
 {
 	int		i;
 	int		j;
@@ -31,7 +31,7 @@ char		*remove_nl(char *b)
 	return (new_b);
 }
 
-char		*tetri_parser_exce(char *b)
+static char		*tetri_parser_exce(char *b)
 {
 	char	*parsed;
 
@@ -51,7 +51,7 @@ char		*tetri_parser_exce(char *b)
 	return (parsed);
 }
 
-int			extreminos(char *b)
+static int		extreminos(char *b)
 {
 	int		i;
 	int		expectopatrominos;
@@ -79,7 +79,7 @@ int			extreminos(char *b)
 	return (last_d);
 }
 
-int			filler(char *b, char *parsed, int j, int code)
+static int		filler(char *b, char *parsed, int j, int code)
 {
 	if (*(b + 1) == '#' && code != -1)
 	{
@@ -106,7 +106,7 @@ int			filler(char *b, char *parsed, int j, int code)
 	return (0);
 }
 
-char		*block_parser(char *b)
+char			*block_parser(char *b)
 {
 	int		i;
 	int		j;

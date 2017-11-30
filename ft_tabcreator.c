@@ -6,17 +6,17 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 14:36:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/28 13:39:11 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:33:18 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char **ft_tabcreator(int size)
+char	**ft_tabcreator(int size)
 {
-	int count;
-	char *line;
-	char **grid;
+	int		count;
+	char	*line;
+	char	**grid;
 
 	count = 0;
 	if (!(grid = (char**)malloc(sizeof(char*) * size + 1)))
