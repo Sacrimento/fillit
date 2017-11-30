@@ -6,13 +6,13 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:16:22 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/24 18:10:27 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:20:56 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char		*remove_nl(char *b)
+static char		*remove_nl(char *b)
 {
 	int		i;
 	int		j;
@@ -31,7 +31,7 @@ char		*remove_nl(char *b)
 	return (new_b);
 }
 
-char		*tetri_parser_exce(char *b)
+static char		*tetri_parser_exce(char *b)
 {
 	char	*parsed;
 
@@ -41,7 +41,7 @@ char		*tetri_parser_exce(char *b)
 	else if (ft_strstr(parsed, "#...##..#"))
 		parsed = "urbu";
 	else if (ft_strstr(parsed, "#..##...#"))
-		parsed = "ulbu";
+		parsed = "rubd";
 	else if (ft_strstr(parsed, "#..###"))
 		parsed = "rubr";
 	else if (ft_strstr(parsed, "##..##"))
@@ -51,17 +51,16 @@ char		*tetri_parser_exce(char *b)
 	return (parsed);
 }
 
-int			extreminos(char *b)
+static int		extreminos(char *b)
 {
 	int		i;
-
-    int		expectopatrominos;
+	int		expectopatrominos;
 	int		last_d;
 
 	i = 0;
-	expectopatrominos = 0;
 	while (b[i])
 	{
+		expectopatrominos = 0;
 		while (b[i] && b[i] != '#')
 			i++;
 		if (b[i + 1] == '#')
@@ -75,54 +74,57 @@ int			extreminos(char *b)
 		if (expectopatrominos == 1)
 			return (i);
 		else
-		{
 			last_d = i++;
-			expectopatrominos = 0;
-		}
 	}
 	return (last_d);
 }
 
-char		*block_parser(char *b)
+static int		filler(char *b, char *parsed, int j, int code)
+{
+	if (*(b + 1) == '#' && code != -1)
+	{
+		parsed[j] = 'r';
+		return (1);
+	}
+	else if (*(b + 5) == '#' && code != -5)
+	{
+		parsed[j] = 'd';
+		return (5);
+	}
+	else if (*(b - 5) == '#' && code != 5)
+	{
+		parsed[j] = 'u';
+		return (-5);
+	}
+	else if (*(b - 1) == '#' && code != 1)
+	{
+		parsed[j] = 'l';
+		return (-1);
+	}
+	else
+		error();
+	return (0);
+}
+
+char			*block_parser(char *b)
 {
 	int		i;
 	int		j;
 	char	*parsed;
 	int		code;
 
+	code = 0;
 	i = extreminos(b);
 	j = 0;
 	if ((parsed = tetri_parser_exce(b)))
 		return (parsed);
+	b = &(*(b + i));
 	parsed = ft_strnew(3);
 	while (j < 3)
 	{
-		if (b[i + 1] == '#' && code != -1)
-		{
-			code = 1;
-			parsed[j++] = 'r';
-			i++;
-		}
-		else if (b[i + 5] == '#' && code != -5)
-		{
-			code = 5;
-			parsed[j++] = 'd';
-			i += 5;
-		}
-		else if (b[i - 5] == '#' && code != 5)
-		{
-			code = -5;
-			parsed[j++] = 'u';
-			i -= 5;
-		}
-		else if (b[i - 1] == '#' && code != 1)
-		{
-			code = -1;
-			parsed[j++] = 'l';
-			i--;
-		}
-		else
-			error();
+		code = filler(b, parsed, j, code);
+		b = &(b[code]);
+		j++;
 	}
 	return (parsed);
 }

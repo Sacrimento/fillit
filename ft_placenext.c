@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 12:03:50 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 12:49:13 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static int	chk_place(char *block, char **grid, int line, int row)
 static int	chk_lim(char **grid, char letter, int limit)
 {
 	ft_alphablock(grid, letter);
-	ft_print_split(grid, 20);
 	if (test_limit(grid, limit))
 		return (1);
 	ft_eraseblock(grid, letter);

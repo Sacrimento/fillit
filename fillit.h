@@ -6,10 +6,9 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/29 20:00:33 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 12:28:11 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FILLIT_H
 # define FILLIT_H
@@ -32,17 +31,23 @@ typedef struct	s_block_sort
 	char	*block;
 }				t_block_sort;
 
-t_list  *is_file_valid(char *file);
-char    *block_parser(char *b);
-void	error(void);
-int		ft_placeblock(char *block, char **grid, int line, int row);
-void	ft_alphablock(char **grid, char c);
-void	ft_eraseblock(char **frid, char c);
-char	**ft_tabcreator(int size);
-int		ft_placenext(char *block, char **grid, int limit, char letter);
-void 	ft_controller(t_list *list);
-void	ft_print_split(char **tab, int limit);
-int		ft_combination(t_block_sort *maintab, int start, char **grid, int limit);
-int		ft_gridsize(char **grid);
+t_list			*is_file_valid(char *file);
+char			*block_parser(char *b);
+void			error(void);
+int				ft_placeblock(char *block, char **grid, int line, int row);
+void			ft_alphablock(char **grid, char c);
+void			ft_eraseblock(char **frid, char c);
+char			**ft_tabcreator(int size);
+int				ft_placenext(char *block, char **grid, int limit, char letter);
+void			ft_controller(t_list *list);
+void			ft_print_split(char **tab, int limit);
+int				ft_combination(t_block_sort *maintab, int start,
+													char **grid, int limit);
+int				ft_gridsize(char **grid, int limit);
+int				is_blocks_left(t_block_sort *tab);
+int				tab_size(t_block_sort *block);
+int				already_set(t_block_sort block);
+t_block_sort	mark_as_set(t_block_sort block);
+t_block_sort	mark_as_notset(t_block_sort block);
 
 #endif

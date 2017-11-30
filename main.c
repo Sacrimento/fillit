@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:22:08 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/29 11:46:30 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:21:32 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ void			error(void)
 {
 	ft_putstr("error\n");
 	exit(1);
-}
-
-void 			assign_letter(t_list *list)
-{
-	char	letter;
-
-	letter = 'A';
-	while (list)
-	{
-		list->letter = letter++;
-		list = list->next;
-	}
 }
 
 static char		*ft_read(char *file)
@@ -50,7 +38,6 @@ t_list			*check_parse(char *file)
 	t_list	*list;
 
 	list = is_file_valid(ft_read(file));
-	assign_letter(list);
 	return (list);
 }
 
