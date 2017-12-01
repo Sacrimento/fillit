@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_tabsize.c                                   :+:      :+:    :+:   */
+/*   ft_gridsize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/29 19:53:17 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 12:38:27 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/12/01 15:23:25 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/12/01 15:24:04 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_gridsize(char **grid, int limit)
+int	ft_gridsize(char **grid)
 {
 	int line;
 	int row;
+	int limit;
 
+	limit = ft_get_limit(grid);
 	while (limit)
 	{
 		line = limit;

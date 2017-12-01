@@ -11,7 +11,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_alphablock(char **grid, char c)
+int	ft_alphablock(char **grid, char letter)
 {
 	int line;
 	int row;
@@ -26,7 +26,7 @@ void	ft_alphablock(char **grid, char c)
 		{
 			if (grid[line][row] == '#')
 			{
-				grid[line][row] = c;
+				grid[line][row] = letter;
 				counthash++;
 			}
 			row++;
@@ -34,4 +34,5 @@ void	ft_alphablock(char **grid, char c)
 		row = 0;
 		line++;
 	}
+	return (1);
 }

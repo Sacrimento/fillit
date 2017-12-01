@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/30 13:50:44 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/01 15:24:46 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,20 @@ t_list			*is_file_valid(char *file);
 char			*block_parser(char *b);
 void			error(void);
 int				ft_placeblock(char *block, char **grid, int line, int row);
-void			ft_alphablock(char **grid, char c);
-void			ft_eraseblock(char **frid, char c);
+int				ft_alphablock(char **grid, char letter);
+void			ft_eraseblock(char **grid, char letter);
 char			**ft_tabcreator(int size);
-int				ft_placenext(char *block, char **grid, int limit, char letter);
+int				ft_placenext(char *block, char **grid, char letter);
 void			ft_controller(t_list *list);
-void			ft_print_grid(char **tab, int limit);
-int				ft_combination(t_block_sort *maintab, int start,
-													char **grid, int limit);
-int				ft_gridsize(char **grid, int limit);
+void			ft_print_grid(char **tab);
+int				ft_combination(t_block_sort *maintab, int start, char **grid);
 int				is_blocks_left(t_block_sort *tab);
 int				block_tab_size(t_block_sort *block);
 int				already_set(t_block_sort block);
 t_block_sort	mark_as_set(t_block_sort block);
 t_block_sort	mark_as_notset(t_block_sort block);
+int				search_block(char *block, char **grid, int line, int row);
+int				ft_get_limit(char **grid);
+int				ft_gridsize(char **grid);
 
 #endif

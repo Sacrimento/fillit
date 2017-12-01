@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 17:33:36 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/01 15:27:18 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,22 @@ void ft_controller(t_list *list)
 	int				limit;
 
 	limit = TAB_MAX - 2;
-	grid = ft_tabcreator(TAB_MAX);
+	grid = ft_tabcreator(30);
 	maintab = struct_init(list);
 ///////////////=======================debug==========================
 //	ft_print_struct(maintab);
 //	ft_print_list(list);
 
 
-	while (ft_combination(maintab, 0, grid, limit))
+	while (limit > 1 && ft_combination(maintab, 0, grid))
 	{
-		limit = ft_gridsize(grid, limit);
+		limit = ft_gridsize(grid);
 		ft_clear_placement(maintab);
 		ft_memdel((void**)grid);
-		grid = ft_tabcreator(TAB_MAX);
-		limit--;
+		grid = ft_tabcreator(--limit);
 	}
 	ft_clear_placement(maintab);
 	ft_memdel((void**)grid);
-	grid = ft_tabcreator(TAB_MAX);
-	if (!ft_combination(maintab, 0, grid, ++limit))
-	{
-		ft_clear_placement(maintab);
-		ft_memdel((void**)grid);
-		grid = ft_tabcreator(TAB_MAX);
-		ft_combination(maintab, 0, grid, ++limit);
-	}
-	ft_print_grid(grid, limit);
+	grid = ft_tabcreator(limit+1);
+	ft_combination(maintab, 0, grid);
 }

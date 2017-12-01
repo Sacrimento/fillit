@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 15:09:49 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/01 15:19:14 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * ///////////////=================================================
  */
 
-int	ft_combination(t_block_sort *maintab, int start, char **grid, int limit)
+int	ft_combination(t_block_sort *maintab, int start, char **grid)
 {
 	if (!is_blocks_left(maintab))
 		return (1);
@@ -31,21 +31,21 @@ int	ft_combination(t_block_sort *maintab, int start, char **grid, int limit)
 		return (0);
 	if (already_set(maintab[start]))
 		return (0);
-	if (!ft_placenext((maintab[start]).block, grid, limit, start + 65))
+	if (!ft_placenext((maintab[start]).block, grid, start + 65))
 	{
 		if (start + 1 > block_tab_size(maintab))
 			return (0);
-		return (ft_combination(maintab, start + 1, grid, limit));
+		return (ft_combination(maintab, start + 1, grid));
 	}
 	else
 		maintab[start] = mark_as_set(maintab[start]);
-	if (ft_combination(maintab, 0, grid, limit))
+	if (ft_combination(maintab, 0, grid))
 		return (1);
 	else
 	{
 		maintab[start] = mark_as_notset(maintab[start]);
 		ft_eraseblock(grid, start + 65);
-		return (ft_combination(maintab, start + 1, grid, limit));
+		return (ft_combination(maintab, start + 1, grid));
 	}
 	return (0);
 }

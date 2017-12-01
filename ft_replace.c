@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 18:37:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/30 18:38:55 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/01 13:33:58 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,22 @@
  * - Parser needs to parse trough the point the most close to the left
 */
 
-static int ft_search_block(char *block, char **grid, int line, int row)
+static int	revlast(char *block, char **grid, int line, int row)
+{
+	if (block[-1] == 'l')
+		row++;
+	if (block[-1] == 'r')
+		row--;
+	if (block[-1] == 'u')
+		line++;
+	if (block[-1] == 'd')
+		line--;
+	if (search_block(&block[1], grid, line, row))
+		return (1);
+	return (0);
+}
+
+int			search_block(char *block, char **grid, int line, int row)
 {
 	int placeres;
 
@@ -36,22 +51,79 @@ static int ft_search_block(char *block, char **grid, int line, int row)
 	if (grid[line][row])
 	{
 		if (block[0] == 'l')
-			placeres = ft_placeblock(&block[1], grid, line, row - 1);
+			placeres = search_block(&block[1], grid, line, row - 1);
 		if (block[0] == 'r')
-			placeres = ft_placeblock(&block[1], grid, line, row + 1);
+			placeres = search_block(&block[1], grid, line, row + 1);
 		if (block[0] == 'u')
-			placeres = ft_placeblock(&block[1], grid, line - 1, row);
+			placeres = search_block(&block[1], grid, line - 1, row);
 		if (block[0] == 'd')
-			placeres = ft_placeblock(&block[1], grid, line + 1, row);
+			placeres = search_block(&block[1], grid, line + 1, row);
 		if (block[0] == 'b')
-			placeres = ft_revlast(&block[0], grid, line, row);
+			placeres = revlast(&block[0], grid, line, row);
 	}
 	if (placeres && grid[line][row] && grid[line] && grid[line][row] == '#')
 		placeres = 1;
 	return (placeres);
 }
 
-int	ft_replace(list history, char *block, char **grid, char letter)
+void		hash_block(char **grid, char letter)
 {
-		
+	int line;
+	int row;
+	int counthash;
+
+	line = 0;
+	row = 0;
+	counthash = 0;
+	while (grid[line] && counthash < 4)
+	{
+		while (grid[line][row])
+		{
+			if (grid[line][row] == letter)
+			{
+				grid[line][row] = '#';
+				counthash++;
+			}
+			row++;
+		}
+		row = 0;
+		line++;
+	}
+}
+
+static void	erase_and_mark(char **grid, int line, int row, char letter)
+{
+	ft_eraseblock(grid, '#');
+	grid[line][row] = ft_tolower(letter);
+}
+
+int			ft_replace(char *block, char **grid, char letter, int limit)
+{
+	int line;
+	int row;
+
+	line = -1;
+	hash_block(grid, letter);
+	while (++line <= limit)
+	{
+		row = -1;
+		while (++row <= limit)
+		{
+			if (search_block(block, grid, line, row))
+			{
+				erase_and_mark(grid, line, row, letter);
+				if (ft_placenext(block, grid, limit, letter))
+					{
+						grid[line][row] = '.';
+						return (1);
+					}
+				else
+					{
+						grid[line][row] = '.';
+						ft_placenext(block, grid, limit, letter);
+						return (0);
+					}
+			}
+		}
+	}
 }
