@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 15:08:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/01 15:16:21 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 14:46:17 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	ft_get_limit(char **grid)
 	row = 0;
 	while (grid[0][row])
 		row++;
-	return (row);
+	return (row - 1);
 }

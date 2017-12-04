@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/04 13:20:14 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 13:40:13 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,15 @@ void ft_controller(t_list *list)
 ///////////////========debug========
 //	ft_print_struct(maintab);
 //	ft_print_list(list);
-	
+
 	ft_combination(maintab, 0 , grid);
+	ft_print_grid(grid);
 	limit = ft_gridsize(grid);
 	reset_grid(maintab, grid, limit);
+
 	while (limit > 0 && ft_combination(maintab, 0, grid))
 		reset_grid(maintab, grid, --limit);
-	reset_grid(maintab, grid, limit);
+	reset_grid(maintab, grid, ++limit);
 	ft_combination(maintab, 0, grid);
+
 }
