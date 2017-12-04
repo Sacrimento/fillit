@@ -6,7 +6,7 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/12/01 15:10:21 by mfonteni         ###   ########.fr        #
+#    Updated: 2017/12/04 15:30:29 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,17 @@ NAME = fillit
 SRC = main.c \
 	  parser.c \
       file_checker.c \
-	  ft_combination.c \
-	  ft_eraseblock.c \
-	  ft_placeblock.c \
-	  ft_placenext.c \
-	  ft_alphablock.c \
-	  ft_tabcreator.c \
-	  ft_print_grid.c \
-	  ft_controller.c \
-	  ft_gridsize.c \
-	  ft_struct_checker.c \
-	  ft_get_limit.c
+	  combination.c \
+	  eraseblock.c \
+	  placeblock.c \
+	  placenext.c \
+	  alphablock.c \
+	  tabcreator.c \
+	  print_grid.c \
+	  controller.c \
+	  gridsize.c \
+	  struct_checks.c \
+	  get_limit.c
 
 FLAGS = -Wall -Werror -Wextra
 LIBDIR = ./libft/

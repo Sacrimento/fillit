@@ -52,6 +52,6 @@ int				main(int argc, char **argv)
 		return (1);
 	}
 	tetriminos = check_parse(argv[1]);
-	ft_controller(tetriminos);
+	controller(tetriminos);
 	return (0);
 }

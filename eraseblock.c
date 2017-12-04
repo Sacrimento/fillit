@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_limit.c                                     :+:      :+:    :+:   */
+/*   eraseblock.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/01 15:08:32 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/04 14:46:17 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/24 11:49:05 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/11/29 14:47:24 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_get_limit(char **grid)
+void	eraseblock(char **grid, char c)
 {
+	int line;
 	int row;
+	int count;
 
+	line = 0;
 	row = 0;
-	while (grid[0][row])
-		row++;
-	return (row - 1);
+	count = 0;
+	while (grid[line] && count < 4)
+	{
+		while (grid[line][row])
+		{
+			if (grid[line][row] == c)
+			{
+				grid[line][row] = '.';
+				count++;
+			}
+			row++;
+		}
+		row = 0;
+		line++;
+	}
 }

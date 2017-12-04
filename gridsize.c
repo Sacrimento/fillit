@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_grid.c                                   :+:      :+:    :+:   */
+/*   gridsize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 16:49:11 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/16 16:50:16 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/12/01 15:23:25 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/12/04 14:49:10 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	print_grid(char **tab)
+int	gridsize(char **grid)
 {
-	int cursor;
+	int line;
+	int row;
+	int limit;
 
-	cursor = 0;
-	while (tab[cursor] != 0)
+	limit = check_limit(grid);
+	while (limit)
 	{
-		ft_putstr(tab[cursor]);
-		ft_putchar('\n');
-		cursor++;
+		line = limit;
+		row = 0;
+		while (row <= limit)
+		{
+			if (grid[line][row] && ft_isalpha(grid[line][row]))
+				return (limit);
+			row++;
+		}
+		while (line >= 0)
+		{
+			if (grid[line][row] && ft_isalpha(grid[line][row]))
+				return (limit);
+			line--;
+		}
+		limit--;
 	}
+	return (0);
 }

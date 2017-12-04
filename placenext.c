@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_placenext.c                                     :+:      :+:    :+:   */
+/*   placenext.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 static int	chk_place(char *block, char **grid, int line, int row)
 {
 	if (grid[line][row] && !ft_isalpha(grid[line][row])
-			&& ft_placeblock(block, grid, line, row))
+			&& placeblock(block, grid, line, row))
 		return (1);
 	return (0);
 }
@@ -24,18 +24,18 @@ static int	chk_dec(int decal, char **grid, char letter)
 {
 	if (decal < 1)
 	{
-		ft_alphablock(grid, letter);
+		alphablock(grid, letter);
 		return (1);
 	}
 	else
 	{
-		ft_alphablock(grid, letter);
-		ft_eraseblock(grid, letter);
+		alphablock(grid, letter);
+		eraseblock(grid, letter);
 		return (0);
 	}
 }
 
-int			ft_placenext(char *blk, char **grid, char let, int decal)
+int			placenext(char *blk, char **grid, char let, int decal)
 {
 	int line;
 	int row;
@@ -43,7 +43,7 @@ int			ft_placenext(char *blk, char **grid, char let, int decal)
 	int tmp_lim;
 
 	tmp_lim = -1;
-	limit = ft_get_limit(grid);
+	limit = check_limit(grid);
 	while (++tmp_lim <= limit)
 	{
 		row = tmp_lim;

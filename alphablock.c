@@ -1,35 +1,38 @@
 /* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabcreator.c                                    :+:      :+:    :+:   */
+/*   alphablock.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 14:36:04 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/04 13:36:59 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/22 15:45:54 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/11/29 18:27:51 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-char	**ft_tabcreator(int size)
+int	alphablock(char **grid, char letter)
 {
-	int		count;
-	char	*line;
-	char	**grid;
+	int line;
+	int row;
+	int counthash;
 
-	count = 0;
-	if (!(grid = (char**)malloc(sizeof(char*) * size + 1)))
-		return (NULL);
-	while (count < size)
+	line = 0;
+	row = 0;
+	counthash = 0;
+	while (grid[line] && counthash < 4)
 	{
-		if ((line = ft_strnew(size)) && grid)
+		while (grid[line][row])
 		{
-			ft_memset(line, '.', size);
-			grid[count] = line;
+			if (grid[line][row] == '#')
+			{
+				grid[line][row] = letter;
+				counthash++;
+			}
+			row++;
 		}
-		count++;
+		row = 0;
+		line++;
 	}
-	grid[count] = 0;
-	return (grid);
+	return (1);
 }

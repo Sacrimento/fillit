@@ -93,7 +93,7 @@ void		hash_block(char **grid, char letter)
 
 static void	erase_and_mark(char **grid, int line, int row, char letter)
 {
-	ft_eraseblock(grid, '#');
+	eraseblock(grid, '#');
 	grid[line][row] = ft_tolower(letter);
 }
 
@@ -112,7 +112,7 @@ int			ft_replace(char *block, char **grid, char letter, int limit)
 			if (search_block(block, grid, line, row))
 			{
 				erase_and_mark(grid, line, row, letter);
-				if (ft_placenext(block, grid, limit, letter))
+				if (placenext(block, grid, limit, letter))
 					{
 						grid[line][row] = '.';
 						return (1);
@@ -120,7 +120,7 @@ int			ft_replace(char *block, char **grid, char letter, int limit)
 				else
 					{
 						grid[line][row] = '.';
-						ft_placenext(block, grid, limit, letter);
+						placenext(block, grid, limit, letter);
 						return (0);
 					}
 			}

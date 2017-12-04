@@ -21,7 +21,7 @@
  * ///////////////=================================================
  */
 
-int	ft_combination(t_block_sort *maintab, int start, char **grid)
+int	combination(t_block_sort *maintab, int start, char **grid)
 {
 	if (!is_blocks_left(maintab))
 		return (1);
@@ -31,21 +31,21 @@ int	ft_combination(t_block_sort *maintab, int start, char **grid)
 		return (0);
 	if (already_set(maintab[start]))
 		return (0);
-	if (!ft_placenext((maintab[start]).block, grid, start + 65, 0))
+	if (!placenext((maintab[start]).block, grid, start + 65, 0))
 	{
 		if (start + 1 > block_tab_size(maintab))
 			return (0);
-		return (ft_combination(maintab, start + 1, grid));
+		return (combination(maintab, start + 1, grid));
 	}
 	else
 		maintab[start] = mark_as_set(maintab[start]);
-	if (ft_combination(maintab, 0, grid))
+	if (combination(maintab, 0, grid))
 		return (1);
 	else
 	{
 		maintab[start] = mark_as_notset(maintab[start]);
-		ft_eraseblock(grid, start + 65);
-		return (ft_combination(maintab, start + 1, grid));
+		eraseblock(grid, start + 65);
+		return (combination(maintab, start + 1, grid));
 	}
 	return (0);
 }

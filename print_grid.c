@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_grid.c                                   :+:      :+:    :+:   */
+/*   print_grid.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouvero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-void	ft_print_grid(char **grid)
+void	print_grid(char **grid)
 {
 	int line;
 	int row;

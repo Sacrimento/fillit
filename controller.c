@@ -61,30 +61,30 @@ static void	reset_grid(t_block_sort *maintab, char **grid, int limit)
 {
 	ft_clear_placement(maintab);
 	ft_memdel((void**)grid);
-	grid = ft_tabcreator(limit);
+	grid = tabcreator(limit);
 }
 
-void ft_controller(t_list *list)
+void controller(t_list *list)
 {
 	char			**grid;
 	t_block_sort	*maintab;
 	int				limit;
 
 	limit = TAB_MAX - 2;
-	grid = ft_tabcreator(30);
+	grid = tabcreator(30);
 	maintab = struct_init(list);
 ///////////////========debug========
 //	ft_print_struct(maintab);
 //	ft_print_list(list);
 
-	ft_combination(maintab, 0 , grid);
-	ft_print_grid(grid);
-	limit = ft_gridsize(grid);
+	combination(maintab, 0 , grid);
+	print_grid(grid);
+	limit = gridsize(grid);
 	reset_grid(maintab, grid, limit);
 
-	while (limit > 0 && ft_combination(maintab, 0, grid))
+	while (limit > 0 && combination(maintab, 0, grid))
 		reset_grid(maintab, grid, --limit);
 	reset_grid(maintab, grid, ++limit);
-	ft_combination(maintab, 0, grid);
+	combination(maintab, 0, grid);
 
 }

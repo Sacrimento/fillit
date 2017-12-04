@@ -34,21 +34,21 @@ typedef struct	s_block_sort
 t_list			*is_file_valid(char *file);
 char			*block_parser(char *b);
 void			error(void);
-int				ft_placeblock(char *block, char **grid, int line, int row);
-int				ft_alphablock(char **grid, char letter);
-void			ft_eraseblock(char **grid, char letter);
-char			**ft_tabcreator(int size);
-int				ft_placenext(char *block, char **grid, char letter, int decal);
-void			ft_controller(t_list *list);
-void			ft_print_grid(char **tab);
-int				ft_combination(t_block_sort *maintab, int start, char **grid);
+int				placeblock(char *block, char **grid, int line, int row);
+int				alphablock(char **grid, char letter);
+void			eraseblock(char **grid, char letter);
+char			**tabcreator(int size);
+int				placenext(char *block, char **grid, char letter, int decal);
+void			controller(t_list *list);
+void			print_grid(char **tab);
+int				combination(t_block_sort *maintab, int start, char **grid);
 int				is_blocks_left(t_block_sort *tab);
 int				block_tab_size(t_block_sort *block);
 int				already_set(t_block_sort block);
 t_block_sort	mark_as_set(t_block_sort block);
 t_block_sort	mark_as_notset(t_block_sort block);
 int				search_block(char *block, char **grid, int line, int row);
-int				ft_get_limit(char **grid);
-int				ft_gridsize(char **grid);
+int				check_limit(char **grid);
+int				gridsize(char **grid);
 
 #endif

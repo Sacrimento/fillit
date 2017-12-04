@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_eraseblock.c                                    :+:      :+:    :+:   */
+/*   tabcreator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 11:49:05 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/29 14:47:24 by mfonteni         ###   ########.fr       */
+/*   Created: 2017/11/27 14:36:04 by mfonteni          #+#    #+#             */
+/*   Updated: 2017/12/04 14:58:32 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_eraseblock(char **grid, char c)
-{
-	int line;
-	int row;
-	int count;
+#include "fillit.h"
 
-	line = 0;
-	row = 0;
+char	**tabcreator(int size)
+{
+	int		count;
+	char	*line;
+	char	**grid;
+
 	count = 0;
-	while (grid[line] && count < 4)
+	if (!(grid = (char**)malloc(sizeof(char*) * size + 1)))
+		return (NULL);
+	while (count < size)
 	{
-		while (grid[line][row])
+		if ((line = ft_strnew(size)) && grid)
 		{
-			if (grid[line][row] == c)
-			{
-				grid[line][row] = '.';
-				count++;
-			}
-			row++;
+			ft_memset(line, '.', size);
+			grid[count] = line;
 		}
-		row = 0;
-		line++;
+		count++;
 	}
+	grid[count] = 0;
+	return (grid);
 }
