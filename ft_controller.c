@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/01 15:27:18 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 13:20:14 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ static void 	ft_print_struct(t_block_sort *tab)
 
 }*/
 
+static void	reset_grid(t_block_sort *maintab, char **grid, int limit)
+{
+	ft_clear_placement(maintab);
+	ft_memdel((void**)grid);
+	grid = ft_tabcreator(limit);
+}
+
 void ft_controller(t_list *list)
 {
 	char			**grid;
@@ -66,20 +73,15 @@ void ft_controller(t_list *list)
 	limit = TAB_MAX - 2;
 	grid = ft_tabcreator(30);
 	maintab = struct_init(list);
-///////////////=======================debug==========================
+///////////////========debug========
 //	ft_print_struct(maintab);
 //	ft_print_list(list);
-
-
-	while (limit > 1 && ft_combination(maintab, 0, grid))
-	{
-		limit = ft_gridsize(grid);
-		ft_clear_placement(maintab);
-		ft_memdel((void**)grid);
-		grid = ft_tabcreator(--limit);
-	}
-	ft_clear_placement(maintab);
-	ft_memdel((void**)grid);
-	grid = ft_tabcreator(limit+1);
+	
+	ft_combination(maintab, 0 , grid);
+	limit = ft_gridsize(grid);
+	reset_grid(maintab, grid, limit);
+	while (limit > 0 && ft_combination(maintab, 0, grid))
+		reset_grid(maintab, grid, --limit);
+	reset_grid(maintab, grid, limit);
 	ft_combination(maintab, 0, grid);
 }

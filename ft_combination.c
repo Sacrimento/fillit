@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/01 15:19:14 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 12:54:54 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_combination(t_block_sort *maintab, int start, char **grid)
 		return (0);
 	if (already_set(maintab[start]))
 		return (0);
-	if (!ft_placenext((maintab[start]).block, grid, start + 65))
+	if (!ft_placenext((maintab[start]).block, grid, start + 65, 0))
 	{
 		if (start + 1 > block_tab_size(maintab))
 			return (0);
