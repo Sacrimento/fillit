@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 13:53:57 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/11/28 12:14:13 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:16:17 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			placeblock(char *block, char **grid, int line, int row)
 	int placeres;
 
 	placeres = 0;
-	if (line < 0 || row < 0)
+	if (line < 0 || row < 0 || line > chk_limit(grid) || row > chk_limit(grid))
 		return (0);
 	if (!block[0])
 		placeres = 1;
@@ -51,7 +51,7 @@ int			placeblock(char *block, char **grid, int line, int row)
 		if (block[0] == 'b')
 			placeres = revlast(&block[0], grid, line, row);
 	}
-	if (placeres && grid[line][row] && grid[line])
+	if (placeres == 1 && grid[line][row] && grid[line])
 		grid[line][row] = '#';
 	return (placeres);
 }

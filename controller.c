@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/04 13:40:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:17:01 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,17 @@ static void 	ft_print_struct(t_block_sort *tab)
 
 }*/
 
-static void	reset_grid(t_block_sort *maintab, char **grid, int limit)
+static char		**reset_grid(t_block_sort *maintab, char **grid, int limit)
 {
+	int count;
+
+	count = 0;
 	ft_clear_placement(maintab);
+	while (grid[count])
+		ft_memdel((void**)&grid[count]);
 	ft_memdel((void**)grid);
 	grid = tabcreator(limit);
+	return (grid);
 }
 
 void controller(t_list *list)
@@ -78,13 +84,11 @@ void controller(t_list *list)
 //	ft_print_list(list);
 
 	combination(maintab, 0 , grid);
-	print_grid(grid);
 	limit = gridsize(grid);
-	reset_grid(maintab, grid, limit);
-
+	grid = reset_grid(maintab, grid, limit);
 	while (limit > 0 && combination(maintab, 0, grid))
-		reset_grid(maintab, grid, --limit);
-	reset_grid(maintab, grid, ++limit);
+		grid = reset_grid(maintab, grid, --limit);
+	grid = reset_grid(maintab, grid, ++limit);
 	combination(maintab, 0, grid);
-
+	print_grid(grid);
 }

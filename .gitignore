@@ -2,3 +2,5 @@ fillit
 */*.o
 *.o
 libft/libft.a
+out
+out2

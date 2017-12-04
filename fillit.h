@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/04 11:53:51 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:08:06 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int				already_set(t_block_sort block);
 t_block_sort	mark_as_set(t_block_sort block);
 t_block_sort	mark_as_notset(t_block_sort block);
 int				search_block(char *block, char **grid, int line, int row);
-int				check_limit(char **grid);
+int				chk_limit(char **grid);
 int				gridsize(char **grid);
 
 #endif

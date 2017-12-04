@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/04 14:46:06 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 18:51:13 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			placenext(char *blk, char **grid, char let, int decal)
 	int tmp_lim;
 
 	tmp_lim = -1;
-	limit = check_limit(grid);
+	limit = chk_limit(grid);
 	while (++tmp_lim <= limit)
 	{
 		row = tmp_lim;

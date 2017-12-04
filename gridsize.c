@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 15:23:25 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/04 14:49:10 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 18:28:43 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	gridsize(char **grid)
 	int row;
 	int limit;
 
-	limit = check_limit(grid);
+	limit = chk_limit(grid);
 	while (limit)
 	{
 		line = limit;

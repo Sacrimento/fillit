@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/04 12:54:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/04 18:05:14 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	combination(t_block_sort *maintab, int start, char **grid)
 		return (0);
 	if (already_set(maintab[start]))
 		return (0);
-	if (!placenext((maintab[start]).block, grid, start + 65, 0))
+	if (!placenext((maintab[start]).block, grid, start + 'A', 0))
 	{
 		if (start + 1 > block_tab_size(maintab))
 			return (0);
@@ -44,7 +44,7 @@ int	combination(t_block_sort *maintab, int start, char **grid)
 	else
 	{
 		maintab[start] = mark_as_notset(maintab[start]);
-		eraseblock(grid, start + 65);
+		eraseblock(grid, start + 'A');
 		return (combination(maintab, start + 1, grid));
 	}
 	return (0);

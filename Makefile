@@ -6,7 +6,7 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/12/04 15:30:29 by mfonteni         ###   ########.fr        #
+#    Updated: 2017/12/04 19:12:49 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = main.c \
 	  controller.c \
 	  gridsize.c \
 	  struct_checks.c \
-	  get_limit.c
+	  chk_limit.c
 
 FLAGS = -Wall -Werror -Wextra
 LIBDIR = ./libft/
