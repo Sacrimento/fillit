@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 14:46:08 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/06 14:46:11 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/06 14:49:48 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ static int	chk_place(char *block, char **grid, int line, int row)
 	return (0);
 }
 
-static int	chk_dec(int decal, char **grid, char letter)
+static int	chk_alph(char **grid, char letter)
 {
-	alphablock(grid, letter);
-	if (decal < 1)
+	if (alphablock(grid, letter))
 		return (1);
 	else
 	{
@@ -32,28 +31,28 @@ static int	chk_dec(int decal, char **grid, char letter)
 	}
 }
 
-int			placenext(char *blk, char **grid, char ltr, int decal)
+int			placenext(char *block, char **grid, char letter)
 {
 	int line;
 	int row;
 	int limit;
-	int tmp_lim;
+	int temp_limit;
 
-	tmp_lim = -1;
+	temp_limit = -1;
 	limit = chk_limit(grid);
-	while (++tmp_lim <= limit)
+	while (++temp_limit <= limit)
 	{
-		row = tmp_lim;
+		row = temp_limit;
 		line = -1;
 		while (++line < row)
 		{
-			if (chk_place(blk, grid, line, row) && chk_dec(decal--, grid, ltr))
+			if (chk_place(block, grid, line, row) && chk_alph(grid, letter))
 				return (1);
 		}
 		row = -1;
 		while (++row <= line)
 		{
-			if (chk_place(blk, grid, line, row) && chk_dec(decal--, grid, ltr))
+			if (chk_place(block, grid, line, row) && chk_alph(grid, letter))
 				return (1);
 		}
 	}
