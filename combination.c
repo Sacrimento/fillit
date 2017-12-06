@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-/* ft_combv2 a combinasion generator with recursive backtracking
+/* combination is a combination generator with recursive backtracking
  * ///////////////=================================================
  * maintab is a struct array with the blocks in alphabetic orderi
  * TODO :
@@ -32,11 +32,7 @@ int	combination(t_block_sort *maintab, int start, char **grid)
 	if (already_set(maintab[start]))
 		return (0);
 	if (!placenext((maintab[start]).block, grid, start + 'A', 0))
-	{
-		if (start + 1 > block_tab_size(maintab))
-			return (0);
 		return (combination(maintab, start + 1, grid));
-	}
 	else
 		maintab[start] = mark_as_set(maintab[start]);
 	if (combination(maintab, 0, grid))

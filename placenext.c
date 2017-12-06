@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:41:24 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/04 18:51:13 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/06 12:10:15 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,17 @@ static int	chk_place(char *block, char **grid, int line, int row)
 
 static int	chk_dec(int decal, char **grid, char letter)
 {
+	alphablock(grid, letter);
 	if (decal < 1)
-	{
-		alphablock(grid, letter);
 		return (1);
-	}
 	else
 	{
-		alphablock(grid, letter);
 		eraseblock(grid, letter);
 		return (0);
 	}
 }
 
-int			placenext(char *blk, char **grid, char let, int decal)
+int			placenext(char *blk, char **grid, char ltr, int decal)
 {
 	int line;
 	int row;
@@ -50,13 +47,13 @@ int			placenext(char *blk, char **grid, char let, int decal)
 		line = -1;
 		while (++line < row)
 		{
-			if (chk_place(blk, grid, line, row) && chk_dec(decal--, grid, let))
+			if (chk_place(blk, grid, line, row) && chk_dec(decal--, grid, ltr))
 				return (1);
 		}
 		row = -1;
 		while (++row <= line)
 		{
-			if (chk_place(blk, grid, line, row) && chk_dec(decal--, grid, let))
+			if (chk_place(blk, grid, line, row) && chk_dec(decal--, grid, ltr))
 				return (1);
 		}
 	}
