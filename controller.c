@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/06 12:06:53 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/06 14:44:14 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static t_block_sort	*struct_init(t_list *list)
 	t_list			*begin;
 	int				i;
 
-	tab = (t_block_sort*)malloc(sizeof(t_block_sort) * (ft_list_size(list) + 1));
+	tab = (t_block_sort*)malloc(
+			sizeof(t_block_sort) * (ft_list_size(list) + 1));
 	i = 0;
 	begin = list;
 	while (i < ft_list_size(begin))
@@ -33,31 +34,16 @@ static t_block_sort	*struct_init(t_list *list)
 	return (tab);
 }
 
-static void		ft_clear_placement(t_block_sort *tab)
+static void			ft_clear_placement(t_block_sort *tab)
 {
 	int count;
 
 	count = 0;
 	while (count <= block_tab_size(tab))
 		(tab[count++]).placed = 0;
-
 }
-/*
-static void 	ft_print_struct(t_block_sort *tab)
-{
-	int		i = 0;
-	while ((tab[i]).block)
-	{
-		printf("[PLACED : %d] ", (tab[i]).placed);
-		printf("[BLOCK : %s]\n", (tab[i]).block);
-		i++;
-	}
-		printf("[PLACED : %d] ", (tab[i]).placed);
-		printf("[BLOCK : %s]\n", (tab[i]).block);
 
-}*/
-
-static char		**reset_grid(t_block_sort *maintab, char **grid, int limit)
+static char			**reset_grid(t_block_sort *maintab, char **grid, int limit)
 {
 	int count;
 
@@ -70,7 +56,7 @@ static char		**reset_grid(t_block_sort *maintab, char **grid, int limit)
 	return (grid);
 }
 
-void controller(t_list *list)
+void				controller(t_list *list)
 {
 	char			**grid;
 	t_block_sort	*maintab;
@@ -79,13 +65,12 @@ void controller(t_list *list)
 	limit = TAB_MAX;
 	grid = tabcreator(30);
 	maintab = struct_init(list);
-
-	combination(maintab, 0 , grid);
+	combination(maintab, 0, 0, grid);
 	limit = gridsize(grid) + 2;
 	grid = reset_grid(maintab, grid, limit);
-	while (limit > 0 && combination(maintab, 0, grid))
+	while (limit > 0 && combination(maintab, 0, 0, grid))
 		grid = reset_grid(maintab, grid, --limit);
 	grid = reset_grid(maintab, grid, ++limit);
-	combination(maintab, 0, grid);
+	combination(maintab, 0, 0, grid);
 	print_grid(grid);
 }

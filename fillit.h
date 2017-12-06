@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/04 19:08:06 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/06 12:49:16 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ char			**tabcreator(int size);
 int				placenext(char *block, char **grid, char letter, int decal);
 void			controller(t_list *list);
 void			print_grid(char **tab);
-int				combination(t_block_sort *maintab, int start, char **grid);
+int				combination(t_block_sort *maintab,
+							int start, int decal, char **grid);
 int				is_blocks_left(t_block_sort *tab);
 int				block_tab_size(t_block_sort *block);
 int				already_set(t_block_sort block);
