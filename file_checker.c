@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 15:54:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/11/30 18:40:38 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/12/07 16:45:23 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,24 @@ static int		valid_char(char c)
 	if (c == '.' || c == '#' || c == '\n')
 		return (1);
 	return (0);
+}
+
+static int		check_layout(char *block)
+{
+	int		i;
+	int		connec;
+
+	i = 0;
+	connec = 0;
+	while (block[i])
+	{
+		if (block[i] == '#' && block[i + 1] == '#')
+			connec++;
+		if (block[i] == '#' && block[i + 5] == '#')
+			connec++;
+		i++;
+	}
+	return (connec > 2 ? 1 : 0);
 }
 
 static void		check_file_errors(char *file, int nl, int i)
@@ -40,8 +58,8 @@ static char		*is_block_valid(char *block, int i, int nl)
 			nl++;
 		else if (block[i] == '#')
 		{
-			if (block[i + 1] == '#' || block[i - 1] == '#' ||
-			block[i + 5] == '#' || block[i - 5] == '#')
+			if ((block[i + 1] == '#' || block[i - 1] == '#' ||
+			block[i + 5] == '#' || block[i - 5] == '#') && check_layout(block))
 				diese++;
 			else
 				error();

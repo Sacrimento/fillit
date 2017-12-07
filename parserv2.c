@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 10:55:06 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/07 16:43:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 16:55:11 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,14 @@ int		get_topleft(char **tab)
 	return (0);
 }
 
+int		back_parser(char *block, int *coo, char *parsed, int diese)
+{
+	if (!ft_charchr(block, '#'))
+		return (0);
+	parsed[diese] = 'b';
+	return (coo[diese - 1]);
+}
+
 char	*block_parser(char *b)
 {
 	int		i;
@@ -86,18 +94,9 @@ char	*block_parser(char *b)
 			i = get_i(i, 1, parsed, diese);
 		else if (b[i - 5] == '#')
 			i = get_i(i, -5, parsed, diese);
-		else
-		{
-			if (!ft_charchr(b, '#'))
-			{
-				printf("%s\n", parsed);
-				return (parsed);
-			}
-			get_i(i, 0, parsed, diese);
-			i = coo[diese - 1];
-		}
+		else if (!((i = back_parser(b, coo, parsed, diese))))
+			return (parsed);
 		diese++;
 	}
-	printf("%s\n", parsed);
 	return (parsed);
 }
