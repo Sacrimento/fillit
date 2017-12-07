@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/07 18:24:51 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 19:21:19 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,34 @@ static char			**reset_grid(t_block_sort *maintab, char **grid, int limit)
 	ft_memdel((void**)grid);
 	grid = tabcreator(limit);
 	return (grid);
+}
+
+static int			gridsize(char **grid)
+{
+	int line;
+	int row;
+	int limit;
+
+	limit = chk_limit(grid);
+	while (limit)
+	{
+		line = limit;
+		row = 0;
+		while (row <= limit)
+		{
+			if (grid[line][row] && ft_isalpha(grid[line][row]))
+				return (limit + 2);
+			row++;
+		}
+		while (line >= 0)
+		{
+			if (grid[line][row] && ft_isalpha(grid[line][row]))
+				return (limit + 2);
+			line--;
+		}
+		limit--;
+	}
+	return (0);
 }
 
 void				controller(t_list *list)

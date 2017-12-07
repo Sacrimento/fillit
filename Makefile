@@ -6,7 +6,7 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/12/07 11:19:51 by abouvero         ###   ########.fr        #
+#    Updated: 2017/12/07 19:23:40 by mfonteni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRC = main.c \
 	  tabcreator.c \
 	  print_grid.c \
 	  controller.c \
-	  gridsize.c \
 	  struct_checks.c \
 	  chk_limit.c
 
