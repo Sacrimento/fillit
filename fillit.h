@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/07 18:13:54 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 19:06:02 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdio.h>
 
 # define BUFF_SIZE 4096
-# define TAB_MAX 100
+# define TAB_MAX 13
 
 typedef struct	s_block_sort
 {

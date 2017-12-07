@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 10:55:06 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/07 16:55:11 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 18:51:04 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,12 @@ char	*block_parser(char *b)
 		else if (b[i - 5] == '#')
 			i = get_i(i, -5, parsed, diese);
 		else if (!((i = back_parser(b, coo, parsed, diese))))
+		{
+			printf("%s\n", parsed);
 			return (parsed);
+		}
 		diese++;
 	}
+printf("%s\n", parsed);
 	return (parsed);
 }
