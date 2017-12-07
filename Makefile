@@ -6,14 +6,14 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/12/04 19:12:49 by mfonteni         ###   ########.fr        #
+#    Updated: 2017/12/07 11:19:51 by abouvero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 SRC = main.c \
-	  parser.c \
+	  parserv2.c \
       file_checker.c \
 	  combination.c \
 	  eraseblock.c \
