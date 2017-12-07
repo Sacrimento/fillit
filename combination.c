@@ -6,7 +6,7 @@
 /*   By: mfonteni <mfonteni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:34:15 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/07 16:07:47 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 16:15:27 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	combination(t_block_sort *maintab, int start, char **grid, int decal)
 {
 	if (!is_blocks_left(maintab))
 		return (1);
-	while (start < block_tab_size(maintab) && already_set(maintab[start]))
+	while (already_set(maintab[start]) && start < block_tab_size(maintab))
 		start++;
 	if (start > block_tab_size(maintab) || !(maintab[start]).block)
 		return (0);
