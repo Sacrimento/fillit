@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:34:02 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/07 18:17:24 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 18:24:51 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,10 @@ void				controller(t_list *list)
 	t_block_sort	*maintab;
 	int				limit;
 
-	limit = TAB_MAX;
-	grid = tabcreator(30);
+	grid = tabcreator(TAB_MAX);
 	maintab = struct_init(list);
 	combination(maintab, 0, grid, 0);
-	limit = gridsize(grid) + 2;
+	limit = gridsize(grid);
 	grid = reset_grid(maintab, grid, limit);
 	while (limit > 0 && combination(maintab, 0, grid, 0))
 		grid = reset_grid(maintab, grid, --limit);
