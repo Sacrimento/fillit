@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 14:46:08 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/06 14:49:48 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 15:02:06 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ static int	chk_place(char *block, char **grid, int line, int row)
 static int	chk_alph(char **grid, char letter)
 {
 	if (alphablock(grid, letter))
+	{
+		print_grid(grid);
+		printf("\n");
 		return (1);
+	}
 	else
 	{
 		eraseblock(grid, letter);
