@@ -6,7 +6,7 @@
 /*   By: mfonteni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 14:46:08 by mfonteni          #+#    #+#             */
-/*   Updated: 2017/12/07 16:08:00 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 16:50:04 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static int	chk_place(char *block, char **grid, int line, int row)
 
 static int	chk_alph(int decal, char **grid, char letter)
 {
+	if (letter == 'C')
+		printf("block : %c, decal :%d\n", letter, decal);
 	if (alphablock(grid, letter) && decal < 1)
 	{
 //		print_grid(grid);

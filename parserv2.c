@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 10:55:06 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/07 14:37:37 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/07 16:43:54 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*block_parser(char *b)
 		{
 			if (!ft_charchr(b, '#'))
 			{
-//				printf("%s\n", parsed);
+				printf("%s\n", parsed);
 				return (parsed);
 			}
 			get_i(i, 0, parsed, diese);
@@ -98,6 +98,6 @@ char	*block_parser(char *b)
 		}
 		diese++;
 	}
-//	printf("%s\n", parsed);
+	printf("%s\n", parsed);
 	return (parsed);
 }
