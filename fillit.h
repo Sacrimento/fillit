@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 11:36:42 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/07 19:22:00 by mfonteni         ###   ########.fr       */
+/*   Updated: 2017/12/08 12:23:40 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int				already_set(t_block_sort block);
 t_block_sort	mark_as_set(t_block_sort block);
 t_block_sort	mark_as_notset(t_block_sort block);
 int				chk_limit(char **grid);
+char			*exce_parsing(char *block);
 
 #endif

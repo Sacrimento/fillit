@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 10:55:06 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/08 11:36:21 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/12/08 12:23:18 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,38 +24,6 @@ int		ft_charchr(char *str, char c)
 		i++;
 	}
 	return (0);
-}
-
-static char		*remove_nl(char *b)
-{
-	int		i;
-	int		j;
-	char	*new_b;
-
-	new_b = ft_strnew(ft_strlen(b));
-	i = 0;
-	j = 0;
-	while (b[i])
-	{
-		if (b[i] == '\n')
-			i++;
-		new_b[j++] = b[i];
-		i++;
-	}
-	return (new_b);
-}
-
-static	char	*exce_parsing(char *block)
-{
-	char	*parsed;
-
-	parsed = remove_nl(block);
-	if (ft_strstr(parsed, "##..#...#"))
-	{
-		parsed = "rbdd";
-		return (parsed);
-	}
-	return (NULL);
 }
 
 int		get_i(int i, int dir, char *parsed, int diese)
@@ -112,17 +80,13 @@ char	*block_parser(char *b)
 	char	*parsed;
 
 	if ((parsed = exce_parsing(b)))
-	{
-		printf("%s\n", parsed);
 		return (parsed);
-	}
 	parsed = ft_strnew(4);
 	i = get_topleft(ft_strsplit(b, '\n'));
-	diese = 0;
-	while (diese < 4)
+	diese = -1;
+	while (++diese < 4 && (b[i] = '.'))
 	{
 		coo[diese] = i;
-		b[i] = '.';
 		if (b[i + 5] == '#')
 			i = get_i(i, 5, parsed, diese);
 		else if (b[i - 1] == '#')
@@ -131,13 +95,8 @@ char	*block_parser(char *b)
 			i = get_i(i, 1, parsed, diese);
 		else if (b[i - 5] == '#')
 			i = get_i(i, -5, parsed, diese);
-		else if (!((i = back_parser(b, coo, parsed, diese))))
-		{
-			printf("%s\n", parsed);
+		else if (!(i = back_parser(b, coo, parsed, diese)))
 			return (parsed);
-		}
-		diese++;
 	}
-	printf("%s\n", parsed);
 	return (parsed);
 }

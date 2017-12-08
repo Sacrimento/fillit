@@ -6,7 +6,7 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/12/07 19:23:40 by mfonteni         ###   ########.fr        #
+#    Updated: 2017/12/08 12:24:10 by abouvero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC = main.c \
 	  print_grid.c \
 	  controller.c \
 	  struct_checks.c \
-	  chk_limit.c
+	  chk_limit.c \
+	  parsing_exce.c
 
 FLAGS = -Wall -Werror -Wextra
 LIBDIR = ./libft/
