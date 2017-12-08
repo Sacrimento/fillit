@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 12:22:32 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/08 12:24:26 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/12/08 12:27:42 by mfonteni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char			*exce_parsing(char *block)
 	parsed = remove_nl(block);
 	if (ft_strstr(parsed, "##..#...#"))
 		parsed = "rbdd";
+	else if (ft_strstr(parsed, "###.#"))
+		parsed = "dbrr";
 	else
 		parsed = NULL;
 	return (parsed);
