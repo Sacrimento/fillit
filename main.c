@@ -6,7 +6,7 @@
 /*   By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:22:08 by abouvero          #+#    #+#             */
-/*   Updated: 2017/12/07 16:49:37 by abouvero         ###   ########.fr       */
+/*   Updated: 2017/12/08 13:40:31 by abouvero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char		*ft_read(char *file)
 	return (ft_strdup(buffer));
 }
 
-t_list			*check_parse(char *file)
+static t_list	*check_parse(char *file)
 {
 	t_list	*list;
 
