@@ -6,14 +6,14 @@
 #    By: abouvero <abouvero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 14:27:58 by abouvero          #+#    #+#              #
-#    Updated: 2017/12/08 12:24:10 by abouvero         ###   ########.fr        #
+#    Updated: 2017/12/08 13:56:50 by abouvero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 SRC = main.c \
-	  parserv2.c \
+	  parser.c \
       file_checker.c \
 	  combination.c \
 	  eraseblock.c \
@@ -30,25 +30,21 @@ SRC = main.c \
 FLAGS = -Wall -Werror -Wextra
 LIBDIR = ./libft/
 LIBFT = ./libft/libft.a
-OBJDIR = ./obj/
-OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
+OBJ = $(SRC:.c=.o)
 
-all: $(OBJDIR) $(LIBFT) $(NAME)
+all: $(NAME)
 
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
-
-$(OBJDIR)%.o:%.c
+%.o:%.c
 	gcc -o $@ -c $< $(FLAGS)
 
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
 $(LIBFT):
 	make -C $(LIBDIR)
 
 clean:
-	@rm -rf $(OBJDIR)
+	@rm -f $(OBJ)
 	@make -C $(LIBDIR) clean
 
 fclean: clean
